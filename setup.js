@@ -10,7 +10,11 @@ const mongod = new MongodbMemoryServer({
   }
 });
 
+// May require additional time for downloading MongoDB binaries
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+
 module.exports = async function() {
+  global.__MONGOD__ = mongod;
   global.__MONGO_URL__ = await mongod.getConnectionString();
   global.__MONGO_DB_NAME__ = MONGO_DB_NAME;
 };
