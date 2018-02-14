@@ -19,6 +19,9 @@
   },
   "files": ["index.js"],
   "keywords": [],
+  "dependencies": {
+    "mongodb-memory-server": "^1.7.0"
+  },
   "devDependencies": {
     "eslint": "^4.15.0",
     "eslint-config-prettier": "^2.9.0",
@@ -38,8 +41,5 @@
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
-  },
-  "dependencies": {
-    "mongodb-memory-server": "^1.7.0"
   }
 }
