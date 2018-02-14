@@ -1,0 +1,7 @@
+.idea/
+coverage/
+node_modules/
+temp
+yarn.lock
+*.log
+.DS_Store
