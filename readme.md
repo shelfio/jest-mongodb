@@ -13,7 +13,7 @@ Copy these files to your repo:
 
 NPM dependencies:
 
-* `mongodb-memory-server` - required for Jest Async Test Environment
+* [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) - required for Jest Async Test Environment
 
 ## License
 
