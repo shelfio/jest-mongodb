@@ -4,6 +4,17 @@
 
 ## Usage
 
+Copy these files to your repo:
+
+* `setup.js` - spins up in-memory mongodb server
+* `teardown.js` - shuts it down
+* `mongo-environment.js` - sets up `__MONGO_URI__` global variable
+* `jest.config.js` - glues all together
+
+NPM dependencies:
+
+* `mongodb-memory-server` - required for Jest Async Test Environment
+
 ## License
 
 MIT © [Vlad Holubiev](https://vladholubiev.com)
