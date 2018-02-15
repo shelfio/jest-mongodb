@@ -9,7 +9,7 @@ beforeAll(async () => {
 });
 
 afterAll(async () => {
-  await connection.stop();
+  await db.close();
 });
 
 it('should insert a doc into collection', async () => {
