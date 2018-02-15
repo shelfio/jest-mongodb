@@ -17,9 +17,9 @@
     "lint": "eslint . --fix",
     "test": "jest --runInBand"
   },
-  "files": ["index.js"],
   "keywords": [],
   "dependencies": {
+    "mongodb": "^3.0.2",
     "mongodb-memory-server": "^1.7.0"
   },
   "devDependencies": {
