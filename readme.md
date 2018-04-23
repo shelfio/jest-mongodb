@@ -11,6 +11,28 @@ Copy these files to your repo:
 * `mongo-environment.js` - sets up `__MONGO_URI__` global variable
 * `jest.config.js` - glues all together
 
+
+Run 
+```sh
+▶ yarn test
+yarn run v1.5.1
+$ jest --runInBand
+Setup MongoDB Test Environment
+ PASS  ./mongo-insert.test.js
+Teardown MongoDB Test Environment
+Setup MongoDB Test Environment
+ PASS  ./mongo-aggregate.test.js
+
+Test Suites: 2 passed, 2 total
+Tests:       3 passed, 3 total
+Snapshots:   0 total
+Time:        1.721s
+Ran all test suites.
+Teardown mongod
+Teardown MongoDB Test Environment
+✨  Done in 3.30s.
+```
+
 NPM dependencies:
 
 * [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) - required for Jest Async Test Environment
