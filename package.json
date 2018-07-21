@@ -19,17 +19,17 @@
   },
   "keywords": [],
   "dependencies": {
-    "mongodb": "^3.0.2",
-    "mongodb-memory-server": "^1.7.0"
+    "mongodb": "3.1.1",
+    "mongodb-memory-server": "1.9.0"
   },
   "devDependencies": {
-    "eslint": "^4.15.0",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.5.0",
-    "husky": "^0.15.0-beta.16",
-    "jest": "^22.1.2",
-    "lint-staged": "^6.0.0",
-    "prettier": "^1.9.2"
+    "eslint": "4.19.1",
+    "eslint-config-prettier": "2.9.0",
+    "eslint-plugin-prettier": "2.6.2",
+    "husky": "0.15.0-rc.13",
+    "jest": "22.4.4",
+    "lint-staged": "6.1.1",
+    "prettier": "1.13.7"
   },
   "jest": {
     "testEnvironment": "node"
