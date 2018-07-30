@@ -6,14 +6,16 @@
 
 Copy these files to your repo:
 
-* `setup.js` - spins up in-memory mongodb server
-* `teardown.js` - shuts it down
-* `mongo-environment.js` - sets up `__MONGO_URI__` global variable
-* `jest.config.js` - glues all together
+- `setup.js` - spins up in-memory mongodb server
+- `teardown.js` - shuts it down
+- `mongo-environment.js` - sets up `__MONGO_URI__` global variable
+- `jest.config.js` - glues all together
 
 NPM dependencies:
 
-* [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) - required for Jest Async Test Environment
+- [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) - required for Jest Async Test Environment
+
+Cache MongoDB binary in CI by putting this folder to the list of cached paths: `~/.mongodb-binaries`
 
 ## License
 
