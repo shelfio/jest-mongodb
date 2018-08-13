@@ -19,7 +19,7 @@
   },
   "keywords": [],
   "dependencies": {
-    "mongodb": "3.1.1",
+    "mongodb": "3.1.2",
     "mongodb-memory-server": "1.9.3"
   },
   "devDependencies": {
