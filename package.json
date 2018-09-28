@@ -23,7 +23,7 @@
     "mongodb-memory-server": "2.2.0"
   },
   "devDependencies": {
-    "eslint": "5.6.0",
+    "eslint": "5.6.1",
     "eslint-config-prettier": "3.1.0",
     "eslint-plugin-prettier": "2.7.0",
     "husky": "1.0.1",
