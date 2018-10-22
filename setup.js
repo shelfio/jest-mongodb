@@ -10,9 +10,14 @@ const mongod = new MongodbMemoryServer.default({
   binary: {
     version: '3.2.18'
   }
+  autoStart: false,
 });
 
-module.exports = async function() {
+module.exports = async () => {
+  if (!mongod.isRunning) {
+    await mongod.start();
+  }
+
   const mongoConfig = {
     mongoDBName: 'jest',
     mongoUri: await mongod.getConnectionString()
