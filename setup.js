@@ -9,7 +9,7 @@ const mongod = new MongodbMemoryServer.default({
   },
   binary: {
     version: '3.2.18'
-  }
+  },
   autoStart: false,
 });
 
