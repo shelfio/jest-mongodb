@@ -20,7 +20,7 @@
   "keywords": [],
   "dependencies": {
     "mongodb": "3.1.10",
-    "mongodb-memory-server": "2.9.3"
+    "mongodb-memory-server": "4.2.2"
   },
   "devDependencies": {
     "eslint": "5.12.0",
