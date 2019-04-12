@@ -25,6 +25,7 @@
     "jest environment"
   ],
   "dependencies": {
+    "cwd": "0.10.0",
     "mongodb": "3.1.10",
     "mongodb-memory-server": "2.9.3"
   },
