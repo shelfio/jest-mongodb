@@ -1,7 +1,7 @@
 {
   "name": "jest-mongodb",
   "version": "0.0.0",
-  "description": "A working example of MongoDB with Jest",
+  "description": "Run your tests using Jest & MongoDB in Memory server",
   "license": "MIT",
   "repository": "vladgolubev/jest-mongodb",
   "author": {
@@ -17,7 +17,13 @@
     "lint": "eslint . --fix",
     "test": "jest"
   },
-  "keywords": [],
+  "keywords": [
+    "jest",
+    "mongodb",
+    "mongodb local",
+    "jest preset",
+    "jest environment"
+  ],
   "dependencies": {
     "mongodb": "3.1.10",
     "mongodb-memory-server": "2.9.3"
@@ -32,7 +38,7 @@
     "prettier": "1.15.3"
   },
   "jest": {
-    "testEnvironment": "node"
+    "preset": "./jest-preset.js"
   },
   "husky": {
     "hooks": {
@@ -40,7 +46,11 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md}": [
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,json,md,yml}": [
       "prettier --write",
       "git add"
     ]
