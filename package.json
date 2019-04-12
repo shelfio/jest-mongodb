@@ -1,18 +1,17 @@
 {
-  "name": "jest-mongodb",
+  "name": "@shelf/jest-mongodb",
   "version": "0.0.0",
   "description": "Run your tests using Jest & MongoDB in Memory server",
   "license": "MIT",
-  "repository": "vladgolubev/jest-mongodb",
+  "repository": "shelfio/jest-mongodb",
   "author": {
     "name": "Vlad Holubiev",
-    "email": "golubev.vld@gmail.com",
-    "url": "vladholubiev.com"
+    "email": "vlad@shelf.io",
+    "url": "shelf.io"
   },
   "engines": {
     "node": ">=8"
   },
-  "private": true,
   "scripts": {
     "lint": "eslint . --fix",
     "test": "jest"
@@ -54,5 +53,8 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
