@@ -1,22 +1,77 @@
-# jest-mongodb [![CircleCI](https://img.shields.io/circleci/project/github/vladgolubev/jest-mongodb.svg)](https://circleci.com/gh/vladgolubev/jest-mongodb) ![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
+# jest-mongodb [![CircleCI](https://circleci.com/gh/shelfio/jest-mongodb/tree/master.svg?style=svg)](https://circleci.com/gh/shelfio/jest-mongodb/tree/master) ![](https://img.shields.io/badge/code_style-prettier-ff69b4.svg) [![npm (scoped)](https://img.shields.io/npm/v/@shelf/jest-mongodb.svg)](https://www.npmjs.com/package/@shelf/jest-mongodb)
 
-> A working example of MongoDB with Jest
+> Jest preset to run MongoDB memory server
 
 ## Usage
 
-Copy these files to your repo:
+### 0. Install
 
-- `setup.js` - spins up in-memory mongodb server
-- `teardown.js` - shuts it down
-- `mongo-environment.js` - sets up `__MONGO_URI__` global variable
-- `jest.config.js` - glues all together
+```
+$ yarn add @shelf/jest-mongodb --dev
+```
 
-NPM dependencies:
+### 1. Create `jest.config.js`
 
-- [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server) - required for Jest Async Test Environment
+```js
+module.exports = {
+  preset: '@shelf/jest-mongodb'
+};
+```
+
+### 2. Create `jest-mongodb-config.js`
+
+See [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server#available-options)
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
+    instance: {
+      dbName: 'jest'
+    },
+    binary: {
+      version: '3.6.10',
+      skipMD5: true
+    },
+    autoStart: false
+  }
+};
+```
+
+### 3. Configure MongoDB client
+
+```js
+const {MongoClient} = require('mongodb');
+
+let connection;
+let db;
+
+beforeAll(async () => {
+  connection = await MongoClient.connect(global.__MONGO_URI__);
+  db = await connection.db(global.__MONGO_DB_NAME__);
+});
+
+afterAll(async () => {
+  await connection.close();
+  await db.close();
+});
+```
+
+### 4. PROFIT! Write tests
+
+```js
+it('should insert a doc into collection', async () => {
+  const users = db.collection('users');
+
+  const mockUser = {_id: 'some-user-id', name: 'John'};
+  await users.insertOne(mockUser);
+
+  const insertedUser = await users.findOne({_id: 'some-user-id'});
+  expect(insertedUser).toEqual(mockUser);
+});
+```
 
 Cache MongoDB binary in CI by putting this folder to the list of cached paths: `~/.mongodb-binaries`
 
 ## License
 
-MIT © [Vlad Holubiev](https://vladholubiev.com)
+MIT © [Shelf](https://shelf.io)
