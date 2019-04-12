@@ -11,11 +11,10 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v2-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v2-dependencies-
 
       - run: yarn
-      - run: yarn test
 
       - save_cache:
           paths:
@@ -23,3 +22,5 @@ jobs:
             - yarn.lock
             - ~/.mongodb-binaries
           key: v2-dependencies-{{ checksum "package.json" }}
+
+      - run: yarn test
