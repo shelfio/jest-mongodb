@@ -72,6 +72,10 @@ it('should insert a doc into collection', async () => {
 
 Cache MongoDB binary in CI by putting this folder to the list of cached paths: `~/.mongodb-binaries`
 
+## See Also
+
+- [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
+
 ## License
 
 MIT © [Shelf](https://shelf.io)
