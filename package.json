@@ -1,6 +1,6 @@
 {
   "name": "@shelf/jest-mongodb",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Run your tests using Jest & MongoDB in Memory server",
   "license": "MIT",
   "repository": "shelfio/jest-mongodb",
