@@ -53,7 +53,6 @@ describe('insert', () => {
 
   afterAll(async () => {
     await connection.close();
-    await db.close();
   });
 });
 ```
