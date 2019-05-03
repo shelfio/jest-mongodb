@@ -4,6 +4,7 @@ const cwd = require('cwd');
 const MongodbMemoryServer = require('mongodb-memory-server');
 const globalConfigPath = join(__dirname, 'globalConfig.json');
 
+const debug = require('debug')('jest-mongodb:setup');
 const mongod = new MongodbMemoryServer.default(getMongodbMemoryOptions());
 
 module.exports = async () => {
@@ -18,7 +19,7 @@ module.exports = async () => {
 
   // Write global config to disk because all tests run in different contexts.
   fs.writeFileSync(globalConfigPath, JSON.stringify(mongoConfig));
-  console.log('Config is written');
+  debug('Config is written');
 
   // Set reference to mongod in order to close the server during teardown.
   global.__MONGOD__ = mongod;

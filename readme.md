@@ -73,6 +73,8 @@ it('should insert a doc into collection', async () => {
 
 Cache MongoDB binary in CI by putting this folder to the list of cached paths: `./node_modules/.cache/mongodb-memory-server/mongodb-binaries`
 
+You can enable debug logs by setting environment variable `DEBUG=jest-mongodb:*`
+
 ## See Also
 
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)

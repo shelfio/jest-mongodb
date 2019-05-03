@@ -3,13 +3,15 @@ const path = require('path');
 const fs = require('fs');
 const globalConfigPath = path.join(__dirname, 'globalConfig.json');
 
+const debug = require('debug')('jest-mongodb:environment');
+
 module.exports = class MongoEnvironment extends NodeEnvironment {
   constructor(config) {
     super(config);
   }
 
   async setup() {
-    console.log('Setup MongoDB Test Environment');
+    debug('Setup MongoDB Test Environment');
 
     const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'));
 
@@ -20,7 +22,7 @@ module.exports = class MongoEnvironment extends NodeEnvironment {
   }
 
   async teardown() {
-    console.log('Teardown MongoDB Test Environment');
+    debug('Teardown MongoDB Test Environment');
 
     await super.teardown();
   }
