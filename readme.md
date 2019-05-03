@@ -71,7 +71,7 @@ it('should insert a doc into collection', async () => {
 });
 ```
 
-Cache MongoDB binary in CI by putting this folder to the list of cached paths: `~/.mongodb-binaries`
+Cache MongoDB binary in CI by putting this folder to the list of cached paths: `./node_modules/.cache/mongodb-memory-server/mongodb-binaries`
 
 ## See Also
 

@@ -20,7 +20,7 @@ jobs:
           paths:
             - node_modules
             - yarn.lock
-            - ~/.mongodb-binaries
+            - ./node_modules/.cache/mongodb-memory-server/mongodb-binaries
           key: v2-dependencies-{{ checksum "package.json" }}
 
       - run: yarn test
