@@ -30,7 +30,7 @@
     "mongodb-memory-server": "5.1.0"
   },
   "devDependencies": {
-    "@shelf/eslint-config": "0.3.2",
+    "@shelf/eslint-config": "0.3.4",
     "eslint": "5.16.0",
     "husky": "2.2.0",
     "jest": "24.8.0",
