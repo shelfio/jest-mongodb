@@ -14,8 +14,7 @@ $ yarn add @shelf/jest-mongodb --dev
 
 ```js
 module.exports = {
-  preset: '@shelf/jest-mongodb',
-  // testEnvironment: 'node', // Comment out this line.
+  preset: '@shelf/jest-mongodb'
 };
 ```
 
