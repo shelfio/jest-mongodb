@@ -18,6 +18,8 @@ module.exports = {
 };
 ```
 
+If you have a custom `jest.config.js` make sure you remove `testEnvironment` property, otherwise it will conflict with the preset.
+
 ### 2. Create `jest-mongodb-config.js`
 
 See [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server#available-options)
