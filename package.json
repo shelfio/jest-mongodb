@@ -27,7 +27,7 @@
     "cwd": "0.10.0",
     "debug": "4.1.1",
     "mongodb": "3.2.4",
-    "mongodb-memory-server": "5.1.1"
+    "mongodb-memory-server": "5.1.2"
   },
   "devDependencies": {
     "@shelf/eslint-config": "0.3.5",
