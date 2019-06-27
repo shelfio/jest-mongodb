@@ -32,7 +32,7 @@
   "devDependencies": {
     "@shelf/eslint-config": "0.3.9",
     "eslint": "5.16.0",
-    "husky": "2.6.0",
+    "husky": "2.7.0",
     "jest": "24.8.0",
     "lint-staged": "8.2.1",
     "prettier": "1.18.2"
