@@ -10,6 +10,8 @@
 $ yarn add @shelf/jest-mongodb --dev
 ```
 
+Make sure `mongodb` is installed in the project as well, as it's required as a peer dependency.
+
 ### 1. Create `jest.config.js`
 
 ```js
