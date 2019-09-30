@@ -26,7 +26,7 @@
   "dependencies": {
     "cwd": "0.10.0",
     "debug": "4.1.1",
-    "mongodb-memory-server": "5.2.5"
+    "mongodb-memory-server": "5.2.6"
   },
   "peerDependencies": {
     "mongodb": "3.x.x"
