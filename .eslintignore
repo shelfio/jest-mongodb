@@ -1,1 +1,3 @@
-package.json
+coverage/
+lib/
+renovate.json

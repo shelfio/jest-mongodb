@@ -2,50 +2,28 @@
   "name": "@shelf/jest-mongodb",
   "version": "1.1.1",
   "description": "Run your tests using Jest & MongoDB in Memory server",
-  "license": "MIT",
+  "keywords": [
+    "jest",
+    "jest environment",
+    "jest preset",
+    "mongodb",
+    "mongodb local"
+  ],
   "repository": "shelfio/jest-mongodb",
+  "license": "MIT",
   "author": {
     "name": "Vlad Holubiev",
     "email": "vlad@shelf.io",
     "url": "shelf.io"
   },
-  "engines": {
-    "node": ">=8"
-  },
   "scripts": {
-    "lint": "eslint . --fix",
+    "lint": "eslint . --fix --ext .js,.json,.ts --quiet",
     "test": "jest"
-  },
-  "keywords": [
-    "jest",
-    "mongodb",
-    "mongodb local",
-    "jest preset",
-    "jest environment"
-  ],
-  "dependencies": {
-    "cwd": "0.10.0",
-    "debug": "4.1.1",
-    "mongodb-memory-server": "5.2.8"
-  },
-  "peerDependencies": {
-    "mongodb": "3.x.x"
-  },
-  "devDependencies": {
-    "@shelf/eslint-config": "0.8.2",
-    "eslint": "6.5.1",
-    "husky": "3.0.9",
-    "jest": "24.9.0",
-    "lint-staged": "9.4.2",
-    "mongodb": "3.3.2",
-    "prettier": "1.18.2"
-  },
-  "jest": {
-    "preset": "./jest-preset.js"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-commit": "git update-index --again"
     }
   },
   "lint-staged": {
@@ -57,6 +35,29 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "jest": {
+    "preset": "./jest-preset.js"
+  },
+  "dependencies": {
+    "cwd": "0.10.0",
+    "debug": "4.1.1",
+    "mongodb-memory-server": "5.2.8"
+  },
+  "devDependencies": {
+    "@shelf/eslint-config": "0.8.2",
+    "eslint": "6.5.1",
+    "husky": "3.0.9",
+    "jest": "24.9.0",
+    "lint-staged": "9.4.2",
+    "mongodb": "3.3.2",
+    "prettier": "1.18.2"
+  },
+  "peerDependencies": {
+    "mongodb": "3.x.x"
+  },
+  "engines": {
+    "node": ">=8"
   },
   "publishConfig": {
     "access": "public"

@@ -20,6 +20,7 @@ describe('insert', () => {
     await users.insertOne(mockUser);
 
     const insertedUser = await users.findOne({_id: 'some-user-id'});
+
     expect(insertedUser).toEqual(mockUser);
   });
 
@@ -30,6 +31,7 @@ describe('insert', () => {
     await users.insertMany(mockUsers);
 
     const insertedUsers = await users.find().toArray();
+
     expect(insertedUsers).toEqual([
       expect.objectContaining({name: 'John'}),
       expect.objectContaining({name: 'Alice'}),
