@@ -84,6 +84,16 @@ Cache MongoDB binary in CI by putting this folder to the list of cached paths: `
 
 You can enable debug logs by setting environment variable `DEBUG=jest-mongodb:*`
 
+#### 5. Clean collections before each test (optional)
+
+```js
+beforeEach(async () => {
+  await db.collection('COLLECTION_NAME').deleteMany({});
+});
+```
+
+<sub>See [this issue](https://github.com/shelfio/jest-mongodb/issues/173) for discussion</sub>
+
 ## See Also
 
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
