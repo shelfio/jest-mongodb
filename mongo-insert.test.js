@@ -5,8 +5,11 @@ describe('insert', () => {
   let db;
 
   beforeAll(async () => {
-    connection = await MongoClient.connect(global.__MONGO_URI__, {useNewUrlParser: true});
-    db = await connection.db(global.__MONGO_DB_NAME__);
+    connection = await MongoClient.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    db = await connection.db();
   });
 
   afterAll(async () => {
