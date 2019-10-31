@@ -45,7 +45,7 @@
     "mongodb-memory-server": "6.0.1"
   },
   "devDependencies": {
-    "@shelf/eslint-config": "0.8.2",
+    "@shelf/eslint-config": "0.8.3",
     "eslint": "6.6.0",
     "husky": "3.0.9",
     "jest": "24.9.0",
