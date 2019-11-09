@@ -51,7 +51,7 @@
     "jest": "24.9.0",
     "lint-staged": "9.4.2",
     "mongodb": "3.3.3",
-    "prettier": "1.19.0"
+    "prettier": "1.19.1"
   },
   "peerDependencies": {
     "mongodb": "3.x.x"
