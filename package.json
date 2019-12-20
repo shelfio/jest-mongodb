@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@shelf/eslint-config": "0.12.1",
-    "eslint": "6.7.2",
+    "eslint": "6.8.0",
     "husky": "3.1.0",
     "jest": "24.9.0",
     "lint-staged": "9.5.0",
