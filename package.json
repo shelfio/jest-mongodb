@@ -50,7 +50,7 @@
     "@shelf/prettier-config": "0.0.7",
     "eslint": "6.8.0",
     "husky": "4.2.3",
-    "jest": "25.2.2",
+    "jest": "25.2.3",
     "lint-staged": "10.0.9",
     "mongodb": "3.5.5",
     "prettier": "2.0.2"
