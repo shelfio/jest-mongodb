@@ -18,7 +18,8 @@
   },
   "scripts": {
     "lint": "eslint . --fix --ext .js,.json,.ts --quiet",
-    "test": "jest"
+    "test": "jest",
+    "test:replicaSet": "export TEST_REPLICASET=true && jest"
   },
   "husky": {
     "hooks": {
