@@ -5,15 +5,26 @@ const MongodbMemoryServer = require('mongodb-memory-server');
 const globalConfigPath = join(__dirname, 'globalConfig.json');
 
 const debug = require('debug')('jest-mongodb:setup');
-const mongod = new MongodbMemoryServer.default(getMongodbMemoryOptions());
+
+let isReplicaSet = false;
+
+function getMongoDBInstanceType() {
+  const options = getMongodbMemoryOptions();
+
+  if (isReplicaSet) return new MongodbMemoryServer.MongoMemoryReplSet(options);
+  else return new MongodbMemoryServer.default(options);
+}
+const mongod = getMongoDBInstanceType();
 
 module.exports = async () => {
   if (!mongod.isRunning) {
     await mongod.start();
   }
 
+  if (isReplicaSet) await mongod.waitUntilRunning();
+
   const mongoConfig = {
-    mongoDBName: getMongodbMemoryOptions().instance.dbName,
+    mongoDBName: await mongod.getDbName(),
     mongoUri: await mongod.getConnectionString()
   };
 
@@ -29,6 +40,8 @@ module.exports = async () => {
 function getMongodbMemoryOptions() {
   try {
     const {mongodbMemoryServerOptions} = require(resolve(cwd(), 'jest-mongodb-config.js'));
+
+    isReplicaSet = typeof mongodbMemoryServerOptions.replSet === 'object';
 
     return mongodbMemoryServerOptions;
   } catch (e) {
