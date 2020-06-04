@@ -12,7 +12,14 @@ const options = {
 
 if (process.env.TEST_REPLICASET) {
   options.mongodbMemoryServerOptions = {
-    replSet: {storageEngine: 'wiredTiger'},
+    replSet: {
+      dbName: 'jest',
+      storageEngine: 'wiredTiger'
+    },
+    binary: {
+      version: '4.0.3',
+      skipMD5: true
+    },
     autoStart: false
   };
 }
