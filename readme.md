@@ -51,8 +51,7 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
   module.exports = {
     mongodbMemoryServerOptions: {
       replSet: {
-        dbName: 'jest',
-        storageEngine: 'wiredTiger'
+        dbName: 'jest'
       },
       binary: {
         version: '4.0.3',
