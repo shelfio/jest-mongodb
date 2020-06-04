@@ -19,7 +19,8 @@
   "scripts": {
     "lint": "eslint . --fix --ext .js,.json,.ts --quiet",
     "test": "jest",
-    "test:replicaSet": "export TEST_REPLICASET=true && jest"
+    "test:replicaSet": "cross-env TEST_REPLICASET=true && jest",
+    "test:all": "npm test && npm run test:replicaSet"
   },
   "husky": {
     "hooks": {
@@ -49,6 +50,7 @@
   "devDependencies": {
     "@shelf/eslint-config": "0.16.0",
     "@shelf/prettier-config": "0.0.7",
+    "cross-env": "^7.0.2",
     "eslint": "7.1.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
