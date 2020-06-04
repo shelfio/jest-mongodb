@@ -27,5 +27,5 @@ describe('insert', () => {
 
       expect(result.members[0].stateStr).toBe('PRIMARY');
     } else await expect(test_cmd).rejects.toThrow('not running with --replSet');
-  }, 30000);
+  });
 });
