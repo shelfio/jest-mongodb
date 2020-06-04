@@ -24,22 +24,44 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 
 ### 2. Create `jest-mongodb-config.js`
 
-See [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server#available-options)
+- Standard
 
-```js
-module.exports = {
-  mongodbMemoryServerOptions: {
-    instance: {
-      dbName: 'jest'
-    },
-    binary: {
-      version: '4.0.3',
-      skipMD5: true
-    },
-    autoStart: false
-  }
-};
-```
+  See [mongodb-memory-server: MongoMemoryServer](https://github.com/nodkz/ mongodb-memory-server#available-options-for-mongomemoryserver)
+
+  ```js
+  module.exports = {
+    mongodbMemoryServerOptions: {
+      instance: {
+        dbName: 'jest'
+      },
+      binary: {
+        version: '4.0.3',
+        skipMD5: true
+      },
+      autoStart: false
+    }
+  };
+  ```
+
+- Replica Set
+
+  See [mongodb-memory-server: MongoMemoryReplSet](https://github.com/nodkz/ mongodb-memory-server#available-options-for-mongomemoryreplset)
+
+  ```js
+  module.exports = {
+    mongodbMemoryServerOptions: {
+      replSet: {
+        dbName: 'jest',
+        storageEngine: 'wiredTiger'
+      },
+      binary: {
+        version: '4.0.3',
+        skipMD5: true
+      },
+      autoStart: false
+    }
+  };
+  ```
 
 ### 3. Configure MongoDB client
 
