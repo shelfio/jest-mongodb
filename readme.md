@@ -26,7 +26,7 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 
 - Standard
 
-  See [mongodb-memory-server: MongoMemoryServer](https://github.com/nodkz/ mongodb-memory-server#available-options-for-mongomemoryserver)
+  See [mongodb-memory-server: MongoMemoryServer](https://github.com/nodkz/mongodb-memory-server#available-options-for-mongomemoryserver)
 
   ```js
   module.exports = {
@@ -45,7 +45,7 @@ If you have a custom `jest.config.js` make sure you remove `testEnvironment` pro
 
 - Replica Set
 
-  See [mongodb-memory-server: MongoMemoryReplSet](https://github.com/nodkz/ mongodb-memory-server#available-options-for-mongomemoryreplset)
+  See [mongodb-memory-server: MongoMemoryReplSet](https://github.com/nodkz/mongodb-memory-server#available-options-for-mongomemoryreplset)
 
   ```js
   module.exports = {
