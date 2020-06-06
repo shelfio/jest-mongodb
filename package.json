@@ -52,7 +52,7 @@
     "husky": "4.2.5",
     "jest": "26.0.1",
     "lint-staged": "10.2.9",
-    "mongodb": "3.5.7",
+    "mongodb": "3.5.8",
     "prettier": "2.0.5"
   },
   "peerDependencies": {
