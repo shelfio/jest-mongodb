@@ -20,7 +20,7 @@ module.exports = class MongoEnvironment extends NodeEnvironment {
     const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'));
 
     this.global.__MONGO_URI__ = globalConfig.mongoUri;
-    this.global.__MONGO_DB_NAME__ = uuid.v4();
+    this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName || uuid.v4();
 
     await super.setup();
   }

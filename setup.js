@@ -13,8 +13,11 @@ module.exports = async () => {
     await mongod.start();
   }
 
+  const options = getMongodbMemoryOptions();
+
   const mongoConfig = {
-    mongoUri: await mongod.getConnectionString()
+    mongoUri: await mongod.getConnectionString(),
+    mongoDBName: options.instance.dbName
   };
 
   // Write global config to disk because all tests run in different contexts.
@@ -33,9 +36,6 @@ function getMongodbMemoryOptions() {
     return mongodbMemoryServerOptions;
   } catch (e) {
     return {
-      instance: {
-        dbName: 'jest'
-      },
       binary: {
         skipMD5: true
       },
