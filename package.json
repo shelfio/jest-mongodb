@@ -48,10 +48,10 @@
   "devDependencies": {
     "@shelf/eslint-config": "0.16.0",
     "@shelf/prettier-config": "0.0.7",
-    "eslint": "7.2.0",
+    "eslint": "7.3.0",
     "husky": "4.2.5",
     "jest": "26.0.1",
-    "lint-staged": "10.2.10",
+    "lint-staged": "10.2.11",
     "mongodb": "3.5.8",
     "prettier": "2.0.5"
   },
