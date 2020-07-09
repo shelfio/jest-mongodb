@@ -34,6 +34,7 @@ module.exports = {
       skipMD5: true
     },
     autoStart: false
+    instance: {}
   }
 };
 ```
@@ -50,6 +51,27 @@ module.exports = {
       version: '4.0.3',
       skipMD5: true
     },
+    instance: {
+      dbName: 'jest'
+    }
+    autoStart: false
+  }
+};
+```
+
+To use dynamic database name you must pass empty object for instance field
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
+    instance: {
+      dbName: 'jest'
+    },
+    binary: {
+      version: '4.0.3',
+      skipMD5: true
+    },
+    instance: {}
     autoStart: false
   }
 };

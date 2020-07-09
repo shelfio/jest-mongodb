@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "debug": "4.1.1",
+    "mongodb-memory-server": "6.6.1",
     "uuid": "8.1.0"
   },
   "devDependencies": {

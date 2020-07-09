@@ -39,7 +39,8 @@ function getMongodbMemoryOptions() {
       binary: {
         skipMD5: true
       },
-      autoStart: false
+      autoStart: false,
+      instance: {}
     };
   }
 }
