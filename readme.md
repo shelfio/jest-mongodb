@@ -29,6 +29,20 @@ See [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server#avail
 ```js
 module.exports = {
   mongodbMemoryServerOptions: {
+    binary: {
+      version: '4.0.3',
+      skipMD5: true
+    },
+    autoStart: false
+  }
+};
+```
+
+To use the same database for all tests pass the config like this:
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
     instance: {
       dbName: 'jest'
     },
