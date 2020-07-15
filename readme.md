@@ -33,7 +33,7 @@ module.exports = {
       version: '4.0.3',
       skipMD5: true
     },
-    autoStart: false
+    autoStart: false,
     instance: {}
   }
 };
@@ -53,7 +53,7 @@ module.exports = {
     },
     instance: {
       dbName: 'jest'
-    }
+    },
     autoStart: false
   }
 };
@@ -71,7 +71,7 @@ module.exports = {
       version: '4.0.3',
       skipMD5: true
     },
-    instance: {}
+    instance: {},
     autoStart: false
   }
 };
