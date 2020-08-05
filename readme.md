@@ -44,9 +44,6 @@ To use the same database for all tests pass the config like this:
 ```js
 module.exports = {
   mongodbMemoryServerOptions: {
-    instance: {
-      dbName: 'jest'
-    },
     binary: {
       version: '4.0.3',
       skipMD5: true
@@ -64,9 +61,6 @@ To use dynamic database name you must pass empty object for instance field
 ```js
 module.exports = {
   mongodbMemoryServerOptions: {
-    instance: {
-      dbName: 'jest'
-    },
     binary: {
       version: '4.0.3',
       skipMD5: true
