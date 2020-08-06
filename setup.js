@@ -1,11 +1,11 @@
 const fs = require('fs');
 const {resolve, join} = require('path');
 const MongodbMemoryServer = require('mongodb-memory-server');
+const cwd = process.cwd();
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongod = new MongodbMemoryServer.default(getMongodbMemoryOptions());
 
-const cwd = process.cwd();
 const globalConfigPath = join(cwd, 'globalConfig.json');
 
 module.exports = async () => {
