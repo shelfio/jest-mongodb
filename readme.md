@@ -29,13 +29,43 @@ See [mongodb-memory-server](https://github.com/nodkz/mongodb-memory-server#avail
 ```js
 module.exports = {
   mongodbMemoryServerOptions: {
-    instance: {
-      dbName: 'jest'
-    },
     binary: {
       version: '4.0.3',
       skipMD5: true
     },
+    autoStart: false,
+    instance: {}
+  }
+};
+```
+
+To use the same database for all tests pass the config like this:
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
+    binary: {
+      version: '4.0.3',
+      skipMD5: true
+    },
+    instance: {
+      dbName: 'jest'
+    },
+    autoStart: false
+  }
+};
+```
+
+To use dynamic database name you must pass empty object for instance field
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
+    binary: {
+      version: '4.0.3',
+      skipMD5: true
+    },
+    instance: {},
     autoStart: false
   }
 };

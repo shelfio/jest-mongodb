@@ -1,20 +1,23 @@
 const fs = require('fs');
 const {resolve, join} = require('path');
-const cwd = require('cwd');
 const MongodbMemoryServer = require('mongodb-memory-server');
-const globalConfigPath = join(__dirname, 'globalConfig.json');
+const cwd = process.cwd();
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongod = new MongodbMemoryServer.default(getMongodbMemoryOptions());
+
+const globalConfigPath = join(cwd, 'globalConfig.json');
 
 module.exports = async () => {
   if (!mongod.isRunning) {
     await mongod.start();
   }
 
+  const options = getMongodbMemoryOptions();
+
   const mongoConfig = {
-    mongoDBName: getMongodbMemoryOptions().instance.dbName,
-    mongoUri: await mongod.getConnectionString()
+    mongoUri: await mongod.getConnectionString(),
+    mongoDBName: options.instance.dbName
   };
 
   // Write global config to disk because all tests run in different contexts.
@@ -28,18 +31,16 @@ module.exports = async () => {
 
 function getMongodbMemoryOptions() {
   try {
-    const {mongodbMemoryServerOptions} = require(resolve(cwd(), 'jest-mongodb-config.js'));
+    const {mongodbMemoryServerOptions} = require(resolve(cwd, 'jest-mongodb-config.js'));
 
     return mongodbMemoryServerOptions;
   } catch (e) {
     return {
-      instance: {
-        dbName: 'jest'
-      },
       binary: {
         skipMD5: true
       },
-      autoStart: false
+      autoStart: false,
+      instance: {}
     };
   }
 }
