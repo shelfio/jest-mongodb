@@ -1,8 +1,8 @@
 {
   "name": "@shelf/jest-mongodb",
   "version": "1.2.1",
-  "description": "Run your tests using Jest & MongoDB in Memory server",
   "private": false,
+  "description": "Run your tests using Jest & MongoDB in Memory server",
   "keywords": [
     "jest",
     "jest environment",
@@ -28,12 +28,12 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "eslint --fix",
+    "*.{html,md,yml}": [
+      "prettier --write",
       "git add"
     ],
-    "*.{html,json,md,yml}": [
-      "prettier --write",
+    "*.{js,json}": [
+      "eslint --fix",
       "git add"
     ]
   },
