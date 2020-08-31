@@ -57,8 +57,7 @@
     "prettier": "2.0.5"
   },
   "peerDependencies": {
-    "mongodb": "3.x.x",
-    "mongodb-memory-server": "*"
+    "mongodb": "3.x.x"
   },
   "engines": {
     "node": ">=8"
