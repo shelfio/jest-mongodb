@@ -43,18 +43,18 @@
   },
   "dependencies": {
     "debug": "4.1.1",
-    "mongodb-memory-server": "6.6.3",
+    "mongodb-memory-server": "6.6.7",
     "uuid": "8.3.0"
   },
   "devDependencies": {
-    "@shelf/eslint-config": "0.19.0",
+    "@shelf/eslint-config": "0.20.0",
     "@shelf/prettier-config": "0.0.7",
-    "eslint": "7.6.0",
+    "eslint": "7.7.0",
     "husky": "4.2.5",
-    "jest": "26.2.2",
-    "lint-staged": "10.2.11",
+    "jest": "26.4.2",
+    "lint-staged": "10.2.13",
     "mongodb": "3.6.0",
-    "prettier": "2.0.5"
+    "prettier": "2.1.1"
   },
   "peerDependencies": {
     "mongodb": "3.x.x"
