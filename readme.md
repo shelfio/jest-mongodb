@@ -124,6 +124,20 @@ beforeEach(async () => {
 
 <sub>See [this issue](https://github.com/shelfio/jest-mongodb/issues/173) for discussion</sub>
 
+
+#### 6. Jest watch mode gotcha
+
+This package creates the file `globalConfig.json` in the project root, when using jest `--watch` flag, changes to `globalConfig.json` can cause an infinite loop 
+
+In order to avoid this unwanted behaviour, add `globalConfig` to ignored files in watch mode in the Jest configuation 
+
+```js
+// jest.config.js
+module.exports = {
+  watchPathIgnorePatterns: ['globalConfig'],
+}
+```
+
 ## See Also
 
 - [jest-dynamodb](https://github.com/shelfio/jest-dynamodb)
