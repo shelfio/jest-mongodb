@@ -56,7 +56,7 @@ module.exports = {
 };
 ```
 
-To use dynamic database name you must pass empty object for instance field
+To use dynamic database name you must pass empty object for instance field:
 
 ```js
 module.exports = {
@@ -68,6 +68,22 @@ module.exports = {
     instance: {},
     autoStart: false
   }
+};
+```
+
+To use another uri environment variable name you must set mongoURLEnvName field:
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
+    binary: {
+      version: '4.0.3',
+      skipMD5: true
+    },
+    instance: {},
+    autoStart: false
+  },
+  mongoURLEnvName: 'MONGODB_URI'
 };
 ```
 
