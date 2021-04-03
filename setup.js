@@ -50,7 +50,7 @@ function getMongoURLEnvName() {
   try {
     const {mongoURLEnvName} = require(resolve(cwd, 'jest-mongodb-config.js'));
 
-    return mongoURLEnvName;
+    return mongoURLEnvName || 'MONGO_URL';
   } catch (e) {
     return 'MONGO_URL';
   }
