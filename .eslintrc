@@ -2,6 +2,7 @@
   "root": true,
   "extends": ["@shelf/eslint-config/backend"],
   "rules": {
-    "no-console": 0
+    "no-console": 0,
+    "import/order": 0
   }
 }

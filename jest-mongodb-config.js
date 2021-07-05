@@ -1,10 +1,10 @@
 module.exports = {
   mongodbMemoryServerOptions: {
     binary: {
-      skipMD5: true
+      skipMD5: true,
     },
     autoStart: false,
-    instance: {}
+    instance: {},
   },
-  mongoURLEnvName: 'MONGO_URL'
+  mongoURLEnvName: 'MONGO_URL',
 };

@@ -9,7 +9,7 @@ describe('insert', () => {
   beforeAll(async () => {
     connection = await MongoClient.connect(uri, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
     db = await connection.db();
   });
@@ -40,7 +40,7 @@ describe('insert', () => {
     expect(insertedUsers).toEqual([
       expect.objectContaining({name: 'John'}),
       expect.objectContaining({name: 'Alice'}),
-      expect.objectContaining({name: 'Bob'})
+      expect.objectContaining({name: 'Bob'}),
     ]);
   });
 });

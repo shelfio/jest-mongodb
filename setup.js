@@ -18,7 +18,7 @@ module.exports = async () => {
 
   const mongoConfig = {
     mongoUri: await mongod.getUri(),
-    mongoDBName: options.instance.dbName
+    mongoDBName: options.instance.dbName,
   };
 
   // Write global config to disk because all tests run in different contexts.
@@ -38,10 +38,10 @@ function getMongodbMemoryOptions() {
   } catch (e) {
     return {
       binary: {
-        skipMD5: true
+        skipMD5: true,
       },
       autoStart: false,
-      instance: {}
+      instance: {},
     };
   }
 }

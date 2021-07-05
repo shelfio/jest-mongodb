@@ -9,7 +9,7 @@ describe('insert', () => {
   beforeAll(async () => {
     connection = await MongoClient.connect(uri, {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
     db = await connection.db();
   });
@@ -27,7 +27,7 @@ describe('insert', () => {
       {type: 'Image'},
       {type: 'Document'},
       {type: 'Image'},
-      {type: 'Document'}
+      {type: 'Document'},
     ]);
 
     const topFiles = await files
@@ -37,7 +37,7 @@ describe('insert', () => {
     expect(topFiles).toEqual([
       {_id: 'Document', count: 3},
       {_id: 'Image', count: 2},
-      {_id: 'Video', count: 1}
+      {_id: 'Video', count: 1},
     ]);
   });
 });
