@@ -14,6 +14,7 @@ module.exports = async () => {
   }
 
   const options = getMongodbMemoryOptions();
+  const mongoURLEnvName = getMongoURLEnvName();
 
   const mongoConfig = {
     mongoUri: await mongod.getUri(),
@@ -26,7 +27,7 @@ module.exports = async () => {
 
   // Set reference to mongod in order to close the server during teardown.
   global.__MONGOD__ = mongod;
-  process.env.MONGO_URL = mongoConfig.mongoUri;
+  process.env[mongoURLEnvName] = mongoConfig.mongoUri;
 };
 
 function getMongodbMemoryOptions() {
@@ -42,5 +43,15 @@ function getMongodbMemoryOptions() {
       autoStart: false,
       instance: {}
     };
+  }
+}
+
+function getMongoURLEnvName() {
+  try {
+    const {mongoURLEnvName} = require(resolve(cwd, 'jest-mongodb-config.js'));
+
+    return mongoURLEnvName || 'MONGO_URL';
+  } catch (e) {
+    return 'MONGO_URL';
   }
 }
