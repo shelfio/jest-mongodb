@@ -60,7 +60,7 @@
     "mongodb": "3.x.x"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=8"
   },
   "publishConfig": {
     "access": "public"
