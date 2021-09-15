@@ -56,7 +56,7 @@ module.exports = {
 };
 ```
 
-To use separate database for each jest worker pass the `separateMongoInstances: true` :
+To use separate database for each jest worker pass the `separateMongoInstances: true` (doesn't create `process.env` variable when using this option):
 
 ```js
 module.exports = {
