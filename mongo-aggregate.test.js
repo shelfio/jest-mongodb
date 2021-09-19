@@ -1,10 +1,10 @@
 const {MongoClient} = require('mongodb');
+const {mongoURLEnvName} = require('./jest-mongodb-config');
 
 describe('insert', () => {
-  const uri = global.__MONGO_URI__;
+  const uri = mongoURLEnvName ? process.env[mongoURLEnvName] : process.env.MONGO_URL;
   let connection;
   let db;
-
 
   beforeAll(async () => {
     connection = await MongoClient.connect(uri, {

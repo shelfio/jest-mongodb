@@ -16,7 +16,7 @@ Make sure `mongodb` is installed in the project as well, as it's required as a p
 
 ```js
 module.exports = {
-  preset: '@shelf/jest-mongodb',
+  preset: '@shelf/jest-mongodb'
 };
 ```
 
@@ -31,11 +31,11 @@ module.exports = {
   mongodbMemoryServerOptions: {
     binary: {
       version: '4.0.3',
-      skipMD5: true,
+      skipMD5: true
     },
     autoStart: false,
-    instance: {},
-  },
+    instance: {}
+  }
 };
 ```
 
@@ -46,29 +46,13 @@ module.exports = {
   mongodbMemoryServerOptions: {
     binary: {
       version: '4.0.3',
-      skipMD5: true,
+      skipMD5: true
     },
     instance: {
-      dbName: 'jest',
+      dbName: 'jest'
     },
-    autoStart: false,
-  },
-};
-```
-
-To use separate database for each jest worker pass the `separateMongoInstances: true` (doesn't create `process.env` variable when using this option):
-
-```js
-module.exports = {
-  mongodbMemoryServerOptions: {
-    binary: {
-      skipMD5: true,
-    },
-    autoStart: false,
-    instance: {},
-  },
-
-  separateMongoInstances: true,
+    autoStart: false
+  }
 };
 ```
 
@@ -79,11 +63,11 @@ module.exports = {
   mongodbMemoryServerOptions: {
     binary: {
       version: '4.0.3',
-      skipMD5: true,
+      skipMD5: true
     },
     instance: {},
-    autoStart: false,
-  },
+    autoStart: false
+  }
 };
 ```
 
@@ -94,18 +78,18 @@ module.exports = {
   mongodbMemoryServerOptions: {
     binary: {
       version: '4.0.3',
-      skipMD5: true,
+      skipMD5: true
     },
     instance: {},
-    autoStart: false,
+    autoStart: false
   },
-  mongoURLEnvName: 'MONGODB_URI',
+  mongoURLEnvName: 'MONGODB_URI'
 };
 ```
 
 ### 3. Configure MongoDB client
 
-Library sets the `process.env.MONGO_URL` for your convenience, but using of `global.__MONGO_URI__` is preferable as it works with ` separateMongoInstances: true`
+Library sets the `process.env.MONGO_URL` for your convenience
 
 ```js
 const {MongoClient} = require('mongodb');
@@ -115,9 +99,9 @@ describe('insert', () => {
   let db;
 
   beforeAll(async () => {
-    connection = await MongoClient.connect(global.__MONGO_URI__, {
+    connection = await MongoClient.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
-      useUnifiedTopology: true,
+      useUnifiedTopology: true
     });
     db = await connection.db();
   });
@@ -156,17 +140,18 @@ beforeEach(async () => {
 
 <sub>See [this issue](https://github.com/shelfio/jest-mongodb/issues/173) for discussion</sub>
 
+
 #### 6. Jest watch mode gotcha
 
-This package creates the file `globalConfig.json` in the project root, when using jest `--watch` flag, changes to `globalConfig.json` can cause an infinite loop
+This package creates the file `globalConfig.json` in the project root, when using jest `--watch` flag, changes to `globalConfig.json` can cause an infinite loop 
 
-In order to avoid this unwanted behaviour, add `globalConfig` to ignored files in watch mode in the Jest configuation
+In order to avoid this unwanted behaviour, add `globalConfig` to ignored files in watch mode in the Jest configuation 
 
 ```js
 // jest.config.js
 module.exports = {
   watchPathIgnorePatterns: ['globalConfig'],
-};
+}
 ```
 
 ## See Also
