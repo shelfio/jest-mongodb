@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const {getSeparateMongoInstancesFlag} = require('./helpers');
+const {getUseSharedDBForAllJestWorkersFlag} = require('./helpers');
 
 describe('parallelism: first worker', () => {
   const uri = global.__MONGO_URI__;
@@ -24,7 +24,7 @@ describe('parallelism: first worker', () => {
     await collection.insertOne({a: 1});
     const count = await collection.count({});
 
-    if (getSeparateMongoInstancesFlag()) {
+    if (!getUseSharedDBForAllJestWorkersFlag()) {
       expect(count).toBe(1);
     }
   });

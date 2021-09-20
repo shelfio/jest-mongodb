@@ -4,7 +4,7 @@ const {MongoMemoryServer} = require('mongodb-memory-server');
 const {
   getMongodbMemoryOptions,
   getMongoURLEnvName,
-  getSeparateMongoInstancesFlag,
+  getUseSharedDBForAllJestWorkersFlag,
 } = require('./helpers');
 const cwd = process.cwd();
 
@@ -19,7 +19,10 @@ module.exports = async () => {
   const mongoConfig = {};
 
   //if we run one mongodb instance for all tests
-  if (!getSeparateMongoInstancesFlag()) {
+
+  console.log(getUseSharedDBForAllJestWorkersFlag());
+
+  if (getUseSharedDBForAllJestWorkersFlag()) {
     if (!mongod.isRunning) {
       await mongod.start();
     }
