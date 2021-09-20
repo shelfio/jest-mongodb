@@ -56,7 +56,7 @@ module.exports = {
 };
 ```
 
-To use separate database for each jest worker pass the `separateMongoInstances: true` (doesn't create `process.env` variable when using this option):
+To use separate database for each jest worker pass the `useSharedDBForAllJestWorkers: false` (doesn't create `process.env` variable when using this option):
 
 ```js
 module.exports = {
@@ -68,7 +68,7 @@ module.exports = {
     instance: {},
   },
 
-  separateMongoInstances: true,
+  useSharedDBForAllJestWorkers: false,
 };
 ```
 
@@ -105,7 +105,7 @@ module.exports = {
 
 ### 3. Configure MongoDB client
 
-Library sets the `process.env.MONGO_URL` for your convenience, but using of `global.__MONGO_URI__` is preferable as it works with ` separateMongoInstances: true`
+Library sets the `process.env.MONGO_URL` for your convenience, but using of `global.__MONGO_URI__` is preferable as it works with ` useSharedDBForAllJestWorkers: false`
 
 ```js
 const {MongoClient} = require('mongodb');
