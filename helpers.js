@@ -28,12 +28,16 @@ module.exports.getMongoURLEnvName = function () {
   }
 };
 
-module.exports.getSeparateMongoInstancesFlag = function () {
+module.exports.getUseSharedDBForAllJestWorkersFlag = function () {
   try {
-    const {separateMongoInstances} = require(resolve(cwd, 'jest-mongodb-config.js'));
+    const {useSharedDBForAllJestWorkers} = require(resolve(cwd, 'jest-mongodb-config.js'));
 
-    return separateMongoInstances;
+    if (typeof useSharedDBForAllJestWorkers === 'undefined') {
+      return true;
+    }
+
+    return useSharedDBForAllJestWorkers;
   } catch (e) {
-    return false;
+    return true;
   }
 };
