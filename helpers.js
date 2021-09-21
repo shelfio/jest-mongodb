@@ -28,7 +28,7 @@ module.exports.getMongoURLEnvName = function () {
   }
 };
 
-module.exports.getUseSharedDBForAllJestWorkersFlag = function () {
+module.exports.shouldUseSharedDBForAllJestWorkers = function () {
   try {
     const {useSharedDBForAllJestWorkers} = require(resolve(cwd, 'jest-mongodb-config.js'));
 

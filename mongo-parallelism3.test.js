@@ -1,5 +1,5 @@
 const {MongoClient} = require('mongodb');
-const {getUseSharedDBForAllJestWorkersFlag} = require('./helpers');
+const {shouldUseSharedDBForAllJestWorkers} = require('./helpers');
 
 describe('parallelism: third worker', () => {
   const uri = global.__MONGO_URI__;
@@ -24,7 +24,7 @@ describe('parallelism: third worker', () => {
     await collection.insertMany([{a: 1}, {b: 2}, {c: 3}]);
     const count = await collection.count({});
 
-    if (!getUseSharedDBForAllJestWorkersFlag()) {
+    if (!shouldUseSharedDBForAllJestWorkers()) {
       expect(count).toBe(3);
     }
   });

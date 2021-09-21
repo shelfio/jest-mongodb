@@ -4,25 +4,23 @@ const {MongoMemoryServer} = require('mongodb-memory-server');
 const {
   getMongodbMemoryOptions,
   getMongoURLEnvName,
-  getUseSharedDBForAllJestWorkersFlag,
+  shouldUseSharedDBForAllJestWorkers,
 } = require('./helpers');
-const cwd = process.cwd();
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongod = new MongoMemoryServer(getMongodbMemoryOptions());
 
+const cwd = process.cwd();
 const globalConfigPath = join(cwd, 'globalConfig.json');
 
 module.exports = async () => {
   const options = getMongodbMemoryOptions();
-
   const mongoConfig = {};
 
-  //if we run one mongodb instance for all tests
+  debug(`shouldUseSharedDBForAllJestWorkers: ${shouldUseSharedDBForAllJestWorkers()}`);
 
-  console.log(getUseSharedDBForAllJestWorkersFlag());
-
-  if (getUseSharedDBForAllJestWorkersFlag()) {
+  // if we run one mongodb instance for all tests
+  if (shouldUseSharedDBForAllJestWorkers()) {
     if (!mongod.isRunning) {
       await mongod.start();
     }
