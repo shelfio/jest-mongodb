@@ -14,8 +14,8 @@ const globalConfigPath = path.join(cwd, 'globalConfig.json');
 let mongo = new MongoMemoryServer(getMongodbMemoryOptions());
 
 module.exports = class MongoEnvironment extends NodeEnvironment {
-  constructor(config) {
-    super(config);
+  constructor(config, context) {
+    super(config, context);
   }
 
   async setup() {
