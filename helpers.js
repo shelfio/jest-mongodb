@@ -1,10 +1,11 @@
 const {resolve} = require('path');
 
 const cwd = process.cwd();
+const configFile = process.env.MONGO_MEMORY_SERVER_FILE || 'jest-mongodb-config.js';
 
 module.exports.getMongodbMemoryOptions = function () {
   try {
-    const {mongodbMemoryServerOptions} = require(resolve(cwd, 'jest-mongodb-config.js'));
+    const {mongodbMemoryServerOptions} = require(resolve(cwd, configFile));
 
     return mongodbMemoryServerOptions;
   } catch (e) {
@@ -20,7 +21,7 @@ module.exports.getMongodbMemoryOptions = function () {
 
 module.exports.getMongoURLEnvName = function () {
   try {
-    const {mongoURLEnvName} = require(resolve(cwd, 'jest-mongodb-config.js'));
+    const {mongoURLEnvName} = require(resolve(cwd, configFile));
 
     return mongoURLEnvName || 'MONGO_URL';
   } catch (e) {
@@ -30,7 +31,7 @@ module.exports.getMongoURLEnvName = function () {
 
 module.exports.shouldUseSharedDBForAllJestWorkers = function () {
   try {
-    const {useSharedDBForAllJestWorkers} = require(resolve(cwd, 'jest-mongodb-config.js'));
+    const {useSharedDBForAllJestWorkers} = require(resolve(cwd, configFile));
 
     if (typeof useSharedDBForAllJestWorkers === 'undefined') {
       return true;
