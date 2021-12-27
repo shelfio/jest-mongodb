@@ -1,6 +1,6 @@
 const fs = require('fs');
 const {join} = require('path');
-const {MongoMemoryServer} = require('mongodb-memory-server');
+const {MongoMemoryServer, MongoMemoryReplSet} = require('mongodb-memory-server');
 const {
   getMongodbMemoryOptions,
   getMongoURLEnvName,
@@ -8,7 +8,14 @@ const {
 } = require('./helpers');
 
 const debug = require('debug')('jest-mongodb:setup');
-const mongod = new MongoMemoryServer(getMongodbMemoryOptions());
+const mongoMemoryServerOptions = getMongodbMemoryOptions();
+const isReplSet = Boolean(mongoMemoryServerOptions.replSet);
+
+debug(`isReplSet ${isReplSet}`);
+
+const mongo = isReplSet
+  ? new MongoMemoryReplSet(mongoMemoryServerOptions)
+  : new MongoMemoryServer(mongoMemoryServerOptions);
 
 const cwd = process.cwd();
 const globalConfigPath = join(cwd, 'globalConfig.json');
@@ -21,18 +28,18 @@ module.exports = async () => {
 
   // if we run one mongodb instance for all tests
   if (shouldUseSharedDBForAllJestWorkers()) {
-    if (!mongod.isRunning) {
-      await mongod.start();
+    if (!mongo.isRunning) {
+      await mongo.start();
     }
 
     const mongoURLEnvName = getMongoURLEnvName();
 
-    mongoConfig.mongoUri = await mongod.getUri();
+    mongoConfig.mongoUri = await mongo.getUri();
 
     process.env[mongoURLEnvName] = mongoConfig.mongoUri;
 
     // Set reference to mongod in order to close the server during teardown.
-    global.__MONGOD__ = mongod;
+    global.__MONGOD__ = mongo;
   }
 
   mongoConfig.mongoDBName = options.instance.dbName;

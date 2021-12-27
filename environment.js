@@ -2,7 +2,7 @@ const NodeEnvironment = require('jest-environment-node');
 const path = require('path');
 const fs = require('fs');
 const uuid = require('uuid');
-const {MongoMemoryServer} = require('mongodb-memory-server');
+const {MongoMemoryServer, MongoMemoryReplSet} = require('mongodb-memory-server');
 const {getMongodbMemoryOptions} = require('./helpers');
 
 const debug = require('debug')('jest-mongodb:environment');
@@ -10,8 +10,12 @@ const debug = require('debug')('jest-mongodb:environment');
 const cwd = process.cwd();
 
 const globalConfigPath = path.join(cwd, 'globalConfig.json');
+const options = getMongodbMemoryOptions();
+const isReplSet = Boolean(options.replSet);
 
-let mongo = new MongoMemoryServer(getMongodbMemoryOptions());
+debug(`isReplSet`, isReplSet);
+
+let mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
 
 module.exports = class MongoEnvironment extends NodeEnvironment {
   constructor(config, context) {
