@@ -19,7 +19,8 @@
   },
   "scripts": {
     "lint": "eslint . --fix --ext .js,.json,.ts --quiet",
-    "test": "jest"
+    "test": "jest",
+    "test:repl": "MONGO_MEMORY_SERVER_FILE=jest-mongodb-config-repl.js jest"
   },
   "husky": {
     "hooks": {

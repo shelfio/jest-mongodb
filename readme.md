@@ -103,6 +103,25 @@ module.exports = {
 };
 ```
 
+To use mongo as a replica set you must add the `replSet` config object and set
+`count` and `storageEngine` fields:
+
+```js
+module.exports = {
+  mongodbMemoryServerOptions: {
+    binary: {
+      skipMD5: true,
+    },
+    autoStart: false,
+    instance: {},
+    replSet: {
+      count: 3,
+      storageEngine: 'wiredTiger',
+    },
+  },
+};
+```
+
 ### 3. Configure MongoDB client
 
 Library sets the `process.env.MONGO_URL` for your convenience, but using of `global.__MONGO_URI__` is preferable as it works with ` useSharedDBForAllJestWorkers: false`
