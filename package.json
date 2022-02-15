@@ -58,7 +58,8 @@
     "prettier": "2.5.1"
   },
   "peerDependencies": {
-    "mongodb": "3.x.x || 4.x"
+    "mongodb": "3.x.x || 4.x",
+    "jest-environment-node": "27.x.x"
   },
   "engines": {
     "node": ">=12"
