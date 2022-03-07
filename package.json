@@ -1,6 +1,6 @@
 {
   "name": "@shelf/jest-mongodb",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "private": false,
   "description": "Run your tests using Jest & MongoDB in Memory server",
   "keywords": [
