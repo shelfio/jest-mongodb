@@ -22,12 +22,6 @@
     "test": "jest",
     "test:repl": "MONGO_MEMORY_SERVER_FILE=jest-mongodb-config-repl.js jest"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-commit": "git update-index --again"
-    }
-  },
   "lint-staged": {
     "*.{html,md,yml}": [
       "prettier --write",
@@ -50,8 +44,8 @@
   "devDependencies": {
     "@shelf/eslint-config": "1.5.0",
     "@shelf/prettier-config": "1.0.0",
-    "eslint": "8.10.0",
-    "husky": "4.3.8",
+    "eslint": "7.32.0",
+    "husky": "7.0.4",
     "jest": "27.5.1",
     "lint-staged": "12.3.5",
     "mongodb": "4.2.2",
