@@ -13,11 +13,13 @@ const globalConfigPath = path.join(cwd, 'globalConfig.json');
 const options = getMongodbMemoryOptions();
 const isReplSet = Boolean(options.replSet);
 
+const TestEnvironment = NodeEnvironment.default ? NodeEnvironment.default : NodeEnvironment;
+
 debug(`isReplSet`, isReplSet);
 
 let mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
 
-module.exports = class MongoEnvironment extends NodeEnvironment {
+module.exports = class MongoEnvironment extends TestEnvironment {
   constructor(config, context) {
     super(config, context);
   }
