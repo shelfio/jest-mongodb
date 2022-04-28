@@ -1,6 +1,6 @@
 {
   "name": "@shelf/jest-mongodb",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "private": false,
   "description": "Run your tests using Jest & MongoDB in Memory server",
   "keywords": [
@@ -52,8 +52,8 @@
     "prettier": "2.6.2"
   },
   "peerDependencies": {
-    "mongodb": "3.x.x || 4.x",
-    "jest-environment-node": "27.x.x"
+    "jest-environment-node": "27.x.x",
+    "mongodb": "3.x.x || 4.x"
   },
   "engines": {
     "node": ">=12"
