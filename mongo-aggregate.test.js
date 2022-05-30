@@ -5,7 +5,6 @@ describe('insert', () => {
   let connection;
   let db;
 
-
   beforeAll(async () => {
     connection = await MongoClient.connect(uri, {
       useNewUrlParser: true,

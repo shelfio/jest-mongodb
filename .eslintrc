@@ -1,8 +1,11 @@
 {
   "root": true,
-  "extends": ["@shelf/eslint-config/backend"],
+  "extends": [
+    "@shelf/eslint-config/typescript"
+  ],
   "rules": {
-    "no-console": 0,
-    "import/order": 0
+    "@typescript-eslint/no-var-requires": "off",
+    "no-console": "off",
+    "import/order": "off"
   }
 }

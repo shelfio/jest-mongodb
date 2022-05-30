@@ -1,4 +1,4 @@
-const NodeEnvironment = require('jest-environment-node');
+const {TestEnvironment} = require('jest-environment-node');
 const path = require('path');
 const fs = require('fs');
 const uuid = require('uuid');
@@ -12,8 +12,6 @@ const cwd = process.cwd();
 const globalConfigPath = path.join(cwd, 'globalConfig.json');
 const options = getMongodbMemoryOptions();
 const isReplSet = Boolean(options.replSet);
-
-const TestEnvironment = NodeEnvironment.default ? NodeEnvironment.default : NodeEnvironment;
 
 debug(`isReplSet`, isReplSet);
 

@@ -1,3 +1,4 @@
+/* eslint-disable multiline-ternary */
 const fs = require('fs');
 const {join} = require('path');
 const {MongoMemoryServer, MongoMemoryReplSet} = require('mongodb-memory-server');
