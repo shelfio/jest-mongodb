@@ -48,7 +48,7 @@
     "husky": "8.0.1",
     "jest": "28.1.1",
     "lint-staged": "13.0.2",
-    "mongodb": "4.6.0",
+    "mongodb": "4.7.0",
     "prettier": "2.7.1",
     "typescript": "4.7.4"
   },
