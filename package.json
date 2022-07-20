@@ -57,7 +57,7 @@
     "mongodb": "3.x.x || 4.x"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16"
   },
   "publishConfig": {
     "access": "public"

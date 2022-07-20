@@ -1,27 +1,32 @@
-version: 2
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+
+parameters:
+  node_version:
+    type: string
+    default: '16.15.1'
+
+commands:
+  install_deps:
+    steps:
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+      - node/install-packages:
+          pkg-manager: yarn
+          cache-version: v1-all
+          cache-only-lockfile: true
+          app-dir: ~/repo
+          override-ci-command: yarn install --pure-lockfile --no-progress
 
 jobs:
   build:
-    docker:
-      - image: circleci/node:14
-
+    executor:
+      name: node/default
+      tag: << pipeline.parameters.node_version >>
     working_directory: ~/repo
-
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v2-dependencies-
-
-      - run: yarn
-
-      - save_cache:
-          paths:
-            - node_modules
-            - yarn.lock
-            - ./node_modules/.cache/mongodb-memory-server/mongodb-binaries
-          key: v2-dependencies-{{ checksum "package.json" }}
-
+      - install_deps
       - run: yarn test
       - run: yarn test:repl
