@@ -1,12 +1,16 @@
-const {MongoClient} = require('mongodb');
+import type {Db} from 'mongodb';
+import {MongoClient} from 'mongodb';
+import '../src/types';
 
 describe('insert', () => {
   const uri = global.__MONGO_URI__;
-  let connection;
-  let db;
+  let connection: MongoClient;
+  let db: Db;
 
   beforeAll(async () => {
+    // @ts-ignore
     connection = await MongoClient.connect(uri, {
+      // @ts-ignore
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -21,7 +25,7 @@ describe('insert', () => {
     const users = db.collection('users');
 
     const mockUser = {_id: 'some-user-id', name: 'John'};
-    await users.insertOne(mockUser);
+    await users.insertOne(mockUser as any);
 
     const insertedUser = await users.findOne({_id: 'some-user-id'});
 

@@ -1,13 +1,17 @@
-const {MongoClient} = require('mongodb');
-const {shouldUseSharedDBForAllJestWorkers} = require('./helpers');
+import type {Db} from 'mongodb';
+import {MongoClient} from 'mongodb';
+import '../src/types';
+import {shouldUseSharedDBForAllJestWorkers} from '../src/helpers';
 
-describe('parallelism: second worker', () => {
+describe('parallelism: first worker', () => {
   const uri = global.__MONGO_URI__;
-  let connection;
-  let db;
+  let connection: MongoClient;
+  let db: Db;
 
   beforeAll(async () => {
+    // @ts-ignore
     connection = await MongoClient.connect(uri, {
+      // @ts-ignore
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -21,11 +25,11 @@ describe('parallelism: second worker', () => {
   it('should have separate database', async () => {
     const collection = db.collection('parallelism-test');
 
-    await collection.insertMany([{a: 1}, {b: 2}]);
+    await collection.insertOne({a: 1});
     const count = await collection.count({});
 
     if (!shouldUseSharedDBForAllJestWorkers()) {
-      expect(count).toBe(2);
+      expect(count).toBe(1);
     }
   });
 });

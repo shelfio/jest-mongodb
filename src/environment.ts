@@ -1,31 +1,35 @@
-const {TestEnvironment} = require('jest-environment-node');
-const path = require('path');
-const fs = require('fs');
-const uuid = require('uuid');
-const {MongoMemoryServer, MongoMemoryReplSet} = require('mongodb-memory-server');
-const {getMongodbMemoryOptions} = require('./helpers');
+import {TestEnvironment} from 'jest-environment-node';
+import {join as pathJoin} from 'path';
+import {readFileSync} from 'fs';
+import type {EnvironmentContext} from '@jest/environment';
+import type {JestEnvironmentConfig} from '@jest/environment';
+import {MongoMemoryReplSet, MongoMemoryServer} from 'mongodb-memory-server';
+import {getMongodbMemoryOptions} from './helpers';
 
+const uuid = require('uuid');
+
+// eslint-disable-next-line import/order
 const debug = require('debug')('jest-mongodb:environment');
 
 const cwd = process.cwd();
 
-const globalConfigPath = path.join(cwd, 'globalConfig.json');
+const globalConfigPath = pathJoin(cwd, 'globalConfig.json');
 const options = getMongodbMemoryOptions();
 const isReplSet = Boolean(options.replSet);
 
 debug(`isReplSet`, isReplSet);
 
-let mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
+const mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
 
 module.exports = class MongoEnvironment extends TestEnvironment {
-  constructor(config, context) {
+  constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
     super(config, context);
   }
 
   async setup() {
     debug('Setup MongoDB Test Environment');
 
-    const globalConfig = JSON.parse(fs.readFileSync(globalConfigPath, 'utf-8'));
+    const globalConfig = JSON.parse(readFileSync(globalConfigPath, 'utf-8'));
 
     if (globalConfig.mongoUri) {
       this.global.__MONGO_URI__ = globalConfig.mongoUri;
@@ -48,7 +52,9 @@ module.exports = class MongoEnvironment extends TestEnvironment {
     await super.teardown();
   }
 
+  // @ts-ignore
   runScript(script) {
+    // @ts-ignore
     return super.runScript(script);
   }
 };
