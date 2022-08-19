@@ -25,7 +25,8 @@ describe('insert', () => {
     const users = db.collection('users');
 
     const mockUser = {_id: 'some-user-id', name: 'John'};
-    await users.insertOne(mockUser as any);
+    // @ts-ignore
+    await users.insertOne(mockUser);
 
     const insertedUser = await users.findOne({_id: 'some-user-id'});
 

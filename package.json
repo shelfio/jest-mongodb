@@ -41,7 +41,7 @@
     ]
   },
   "babel": {
-  "extends": "@shelf/babel-config/backend"
+    "extends": "@shelf/babel-config/backend"
   },
   "prettier": "@shelf/prettier-config",
   "jest": {
