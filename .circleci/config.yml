@@ -28,5 +28,9 @@ jobs:
     steps:
       - checkout
       - install_deps
+      - run: yarn build
       - run: yarn test
       - run: yarn test:repl
+      - run: yarn lint:ci
+      - run: yarn type-check
+

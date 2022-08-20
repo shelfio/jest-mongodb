@@ -1,12 +1,13 @@
 /* eslint-disable multiline-ternary */
-const fs = require('fs');
-const {join} = require('path');
-const {MongoMemoryServer, MongoMemoryReplSet} = require('mongodb-memory-server');
-const {
-  getMongodbMemoryOptions,
+import {writeFileSync} from 'fs';
+import {join} from 'path';
+import {MongoMemoryReplSet, MongoMemoryServer} from 'mongodb-memory-server';
+import {
   getMongoURLEnvName,
+  getMongodbMemoryOptions,
   shouldUseSharedDBForAllJestWorkers,
-} = require('./helpers');
+} from './helpers';
+import type {Mongo} from './types';
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongoMemoryServerOptions = getMongodbMemoryOptions();
@@ -14,7 +15,8 @@ const isReplSet = Boolean(mongoMemoryServerOptions.replSet);
 
 debug(`isReplSet ${isReplSet}`);
 
-const mongo = isReplSet
+// @ts-ignore
+const mongo: Mongo = isReplSet
   ? new MongoMemoryReplSet(mongoMemoryServerOptions)
   : new MongoMemoryServer(mongoMemoryServerOptions);
 
@@ -23,7 +25,7 @@ const globalConfigPath = join(cwd, 'globalConfig.json');
 
 module.exports = async () => {
   const options = getMongodbMemoryOptions();
-  const mongoConfig = {};
+  const mongoConfig: {mongoUri?: string; mongoDBName?: string} = {};
 
   debug(`shouldUseSharedDBForAllJestWorkers: ${shouldUseSharedDBForAllJestWorkers()}`);
 
@@ -46,6 +48,6 @@ module.exports = async () => {
   mongoConfig.mongoDBName = options.instance.dbName;
 
   // Write global config to disk because all tests run in different contexts.
-  fs.writeFileSync(globalConfigPath, JSON.stringify(mongoConfig));
+  writeFileSync(globalConfigPath, JSON.stringify(mongoConfig));
   debug('Config is written');
 };
