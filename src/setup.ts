@@ -8,7 +8,7 @@ import {
   shouldUseSharedDBForAllJestWorkers,
 } from './helpers';
 import type {Mongo} from './types';
-import { JestEnvironmentConfig } from '@jest/environment'
+import type { JestEnvironmentConfig } from '@jest/environment'
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongoMemoryServerOptions = getMongodbMemoryOptions();

@@ -1,6 +1,6 @@
 import {join} from 'path';
 import {unlink} from 'fs';
-import { JestEnvironmentConfig } from '@jest/environment'
+import type { JestEnvironmentConfig } from '@jest/environment'
 
 const debug = require('debug')('jest-mongodb:teardown');
 
