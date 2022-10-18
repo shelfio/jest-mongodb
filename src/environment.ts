@@ -11,9 +11,6 @@ const uuid = require('uuid');
 // eslint-disable-next-line import/order
 const debug = require('debug')('jest-mongodb:environment');
 
-const cwd = process.cwd();
-
-const globalConfigPath = pathJoin(cwd, 'globalConfig.json');
 const options = getMongodbMemoryOptions();
 const isReplSet = Boolean(options.replSet);
 
@@ -22,14 +19,16 @@ debug(`isReplSet`, isReplSet);
 const mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
 
 module.exports = class MongoEnvironment extends TestEnvironment {
+  globalConfigPath: string
   constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
     super(config, context);
+    this.globalConfigPath = pathJoin(config.projectConfig.rootDir, 'globalConfig.json');
   }
 
   async setup() {
     debug('Setup MongoDB Test Environment');
 
-    const globalConfig = JSON.parse(readFileSync(globalConfigPath, 'utf-8'));
+    const globalConfig = JSON.parse(readFileSync(this.globalConfigPath, 'utf-8'));
 
     if (globalConfig.mongoUri) {
       this.global.__MONGO_URI__ = globalConfig.mongoUri;
