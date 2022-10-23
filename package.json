@@ -50,7 +50,7 @@
   "dependencies": {
     "debug": "4.3.4",
     "mongodb-memory-server": "8.9.3",
-    "uuid": "8.3.2"
+    "uuid": "9.0.0"
   },
   "devDependencies": {
     "@babel/cli": "7.18.10",
