@@ -19,7 +19,7 @@ debug(`isReplSet`, isReplSet);
 const mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
 
 module.exports = class MongoEnvironment extends TestEnvironment {
-  globalConfigPath: string
+  globalConfigPath: string;
   constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
     super(config, context);
     this.globalConfigPath = pathJoin(config.projectConfig.rootDir, 'globalConfig.json');
