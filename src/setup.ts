@@ -8,6 +8,7 @@ import {
   shouldUseSharedDBForAllJestWorkers,
 } from './helpers';
 import type {Mongo} from './types';
+import type { JestEnvironmentConfig } from '@jest/environment'
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongoMemoryServerOptions = getMongodbMemoryOptions();
@@ -20,10 +21,9 @@ const mongo: Mongo = isReplSet
   ? new MongoMemoryReplSet(mongoMemoryServerOptions)
   : new MongoMemoryServer(mongoMemoryServerOptions);
 
-const cwd = process.cwd();
-const globalConfigPath = join(cwd, 'globalConfig.json');
+module.exports = async (config: JestEnvironmentConfig['projectConfig']) => {
+  const globalConfigPath = join(config.rootDir, 'globalConfig.json');
 
-module.exports = async () => {
   const options = getMongodbMemoryOptions();
   const mongoConfig: {mongoUri?: string; mongoDBName?: string} = {};
 
