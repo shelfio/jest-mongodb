@@ -53,8 +53,8 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@babel/cli": "7.18.10",
-    "@babel/core": "7.18.10",
+    "@babel/cli": "7.19.3",
+    "@babel/core": "7.20.2",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.22.3",
     "@shelf/prettier-config": "1.0.0",
