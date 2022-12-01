@@ -4,9 +4,8 @@ import {readFileSync} from 'fs';
 import type {EnvironmentContext} from '@jest/environment';
 import type {JestEnvironmentConfig} from '@jest/environment';
 import {MongoMemoryReplSet, MongoMemoryServer} from 'mongodb-memory-server';
+import {randomUUID} from 'crypto';
 import {getMongodbMemoryOptions} from './helpers';
-
-const uuid = require('uuid');
 
 // eslint-disable-next-line import/order
 const debug = require('debug')('jest-mongodb:environment');
@@ -38,7 +37,7 @@ module.exports = class MongoEnvironment extends TestEnvironment {
       this.global.__MONGO_URI__ = mongo.getUri();
     }
 
-    this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName || uuid.v4();
+    this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName || randomUUID();
 
     await super.setup();
   }
