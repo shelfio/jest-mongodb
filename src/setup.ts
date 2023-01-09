@@ -22,8 +22,7 @@ const mongo: Mongo = isReplSet
   : new MongoMemoryServer(mongoMemoryServerOptions);
 
 module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
-  const projects = config.projects.length ? config.projects : [config.rootDir];
-  const globalConfigPaths = projects.map(project => join(project, 'globalConfig.json'));
+  const globalConfigPath = join(config.rootDir, 'globalConfig.json');
 
   const options = getMongodbMemoryOptions();
   const mongoConfig: {mongoUri?: string; mongoDBName?: string} = {};
@@ -49,9 +48,6 @@ module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
   mongoConfig.mongoDBName = options.instance.dbName;
 
   // Write global config to disk because all tests run in different contexts.
-  // write one for each registered "project"
-  for (const path of globalConfigPaths) {
-    writeFileSync(path, JSON.stringify(mongoConfig));
-  }
+  writeFileSync(globalConfigPath, JSON.stringify(mongoConfig));
   debug('Config is written');
 };
