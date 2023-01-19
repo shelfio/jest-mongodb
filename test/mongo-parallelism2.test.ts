@@ -1,5 +1,5 @@
-import type {Db} from 'mongodb';
 import {MongoClient} from 'mongodb';
+import type {Db} from 'mongodb';
 import '../src/types';
 import {shouldUseSharedDBForAllJestWorkers} from '../src/helpers';
 

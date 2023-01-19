@@ -3,12 +3,12 @@ import {writeFileSync} from 'fs';
 import {join} from 'path';
 import {MongoMemoryReplSet, MongoMemoryServer} from 'mongodb-memory-server';
 import type {JestEnvironmentConfig} from '@jest/environment';
+import type {Mongo} from './types';
 import {
   getMongoURLEnvName,
   getMongodbMemoryOptions,
   shouldUseSharedDBForAllJestWorkers,
 } from './helpers';
-import type {Mongo} from './types';
 
 const debug = require('debug')('jest-mongodb:setup');
 const mongoMemoryServerOptions = getMongodbMemoryOptions();
