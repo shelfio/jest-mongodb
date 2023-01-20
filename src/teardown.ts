@@ -4,7 +4,7 @@ import type {JestEnvironmentConfig} from '@jest/environment';
 
 const debug = require('debug')('jest-mongodb:teardown');
 
-module.exports = async function (config: JestEnvironmentConfig['projectConfig']) {
+module.exports = async function (config: JestEnvironmentConfig['globalConfig']) {
   const globalConfigPath = join(config.rootDir, 'globalConfig.json');
 
   debug('Teardown mongod');

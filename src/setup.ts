@@ -21,7 +21,7 @@ const mongo: Mongo = isReplSet
   ? new MongoMemoryReplSet(mongoMemoryServerOptions)
   : new MongoMemoryServer(mongoMemoryServerOptions);
 
-module.exports = async (config: JestEnvironmentConfig['projectConfig']) => {
+module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
   const globalConfigPath = join(config.rootDir, 'globalConfig.json');
 
   const options = getMongodbMemoryOptions();

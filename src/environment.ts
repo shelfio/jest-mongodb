@@ -21,7 +21,7 @@ module.exports = class MongoEnvironment extends TestEnvironment {
   globalConfigPath: string;
   constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
     super(config, context);
-    this.globalConfigPath = pathJoin(config.projectConfig.rootDir, 'globalConfig.json');
+    this.globalConfigPath = pathJoin(config.globalConfig.rootDir, 'globalConfig.json');
   }
 
   async setup() {
