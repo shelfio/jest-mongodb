@@ -69,7 +69,7 @@
     "typescript": "4.9.5"
   },
   "peerDependencies": {
-    "jest-environment-node": "27.x.x || 28.x || 29.x",
+    "jest-environment-node": "28.x || 29.x",
     "mongodb": "3.x.x || 4.x || 5.x"
   },
   "engines": {
