@@ -52,7 +52,7 @@
     "mongodb-memory-server": "8.11.5"
   },
   "devDependencies": {
-    "@babel/cli": "7.21.0",
+    "@babel/cli": "7.22.9",
     "@babel/core": "7.22.9",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.27.1",
