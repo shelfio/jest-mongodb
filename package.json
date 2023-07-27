@@ -62,7 +62,7 @@
     "@types/node": "16",
     "eslint": "8.45.0",
     "husky": "8.0.3",
-    "jest": "29.6.1",
+    "jest": "29.6.2",
     "lint-staged": "13.2.3",
     "mongodb": "5.1.0",
     "prettier": "2.8.8",
