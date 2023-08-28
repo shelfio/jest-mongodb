@@ -64,13 +64,13 @@
     "husky": "8.0.3",
     "jest": "29.6.4",
     "lint-staged": "13.3.0",
-    "mongodb": "5.1.0",
+    "mongodb": "6.0.0",
     "prettier": "2.8.8",
     "typescript": "5.1.6"
   },
   "peerDependencies": {
     "jest-environment-node": "27.x.x || 28.x || 29.x",
-    "mongodb": "3.x.x || 4.x || 5.x"
+    "mongodb": "3.x.x || 4.x || 5.x || 6.x"
   },
   "engines": {
     "node": ">=16"
