@@ -11,31 +11,34 @@ import {
 } from './helpers';
 
 const debug = require('debug')('jest-mongodb:setup');
-const mongoMemoryServerOptions = getMongodbMemoryOptions();
-const isReplSet = Boolean(mongoMemoryServerOptions.replSet);
-
-debug(`isReplSet ${isReplSet}`);
-
-// @ts-ignore
-const mongo: Mongo = isReplSet
-  ? new MongoMemoryReplSet(mongoMemoryServerOptions)
-  : new MongoMemoryServer(mongoMemoryServerOptions);
 
 module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
   const globalConfigPath = join(config.rootDir, 'globalConfig.json');
 
-  const options = getMongodbMemoryOptions();
+  const mongoMemoryServerOptions = getMongodbMemoryOptions(config.rootDir);
+  const isReplSet = Boolean(mongoMemoryServerOptions.replSet);
+
+  debug(`isReplSet ${isReplSet}`);
+
+  // @ts-ignore
+  const mongo: Mongo = isReplSet
+    ? new MongoMemoryReplSet(mongoMemoryServerOptions)
+    : new MongoMemoryServer(mongoMemoryServerOptions);
+
+  const options = getMongodbMemoryOptions(config.rootDir);
   const mongoConfig: {mongoUri?: string; mongoDBName?: string} = {};
 
-  debug(`shouldUseSharedDBForAllJestWorkers: ${shouldUseSharedDBForAllJestWorkers()}`);
+  debug(
+    `shouldUseSharedDBForAllJestWorkers: ${shouldUseSharedDBForAllJestWorkers(config.rootDir)}`
+  );
 
   // if we run one mongodb instance for all tests
-  if (shouldUseSharedDBForAllJestWorkers()) {
+  if (shouldUseSharedDBForAllJestWorkers(config.rootDir)) {
     if (!mongo.isRunning) {
       await mongo.start();
     }
 
-    const mongoURLEnvName = getMongoURLEnvName();
+    const mongoURLEnvName = getMongoURLEnvName(config.rootDir);
 
     mongoConfig.mongoUri = await mongo.getUri();
 
