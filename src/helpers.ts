@@ -1,9 +1,8 @@
 import {resolve} from 'path';
 
-const cwd = process.cwd();
 const configFile = process.env.MONGO_MEMORY_SERVER_FILE || 'jest-mongodb-config.js';
 
-export function getMongodbMemoryOptions() {
+export function getMongodbMemoryOptions(cwd: string) {
   try {
     const {mongodbMemoryServerOptions} = require(resolve(cwd, configFile));
 
@@ -19,7 +18,7 @@ export function getMongodbMemoryOptions() {
   }
 }
 
-export function getMongoURLEnvName() {
+export function getMongoURLEnvName(cwd: string) {
   try {
     const {mongoURLEnvName} = require(resolve(cwd, configFile));
 
@@ -29,7 +28,7 @@ export function getMongoURLEnvName() {
   }
 }
 
-export function shouldUseSharedDBForAllJestWorkers() {
+export function shouldUseSharedDBForAllJestWorkers(cwd: string) {
   try {
     const {useSharedDBForAllJestWorkers} = require(resolve(cwd, configFile));
 
