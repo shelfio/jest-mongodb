@@ -1,6 +1,6 @@
 {
   "name": "@shelf/jest-mongodb",
-  "version": "4.1.7",
+  "version": "4.2.0",
   "private": false,
   "description": "Run your tests using Jest & MongoDB in Memory server",
   "keywords": [
@@ -58,7 +58,7 @@
     "@shelf/eslint-config": "2.27.1",
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.1.0",
-    "@types/jest": "29.5.8",
+    "@types/jest": "29.5.11",
     "@types/node": "16",
     "eslint": "8.53.0",
     "husky": "8.0.3",
