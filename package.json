@@ -1,7 +1,6 @@
 {
   "name": "@shelf/jest-mongodb",
-  "version": "4.1.7",
-  "private": false,
+  "version": "4.3.0",
   "description": "Run your tests using Jest & MongoDB in Memory server",
   "keywords": [
     "jest",
@@ -49,28 +48,29 @@
   },
   "dependencies": {
     "debug": "4.3.4",
-    "mongodb-memory-server": "8.11.5"
+    "mongodb-memory-server": "9.1.1"
   },
   "devDependencies": {
-    "@babel/cli": "7.21.0",
-    "@babel/core": "7.22.5",
+    "@babel/cli": "7.23.0",
+    "@babel/core": "7.23.2",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "2.27.1",
     "@shelf/prettier-config": "1.0.0",
-    "@shelf/tsconfig": "0.0.11",
-    "@types/jest": "29.5.2",
+    "@shelf/tsconfig": "0.1.0",
+    "@types/jest": "29.5.11",
     "@types/node": "16",
-    "eslint": "8.43.0",
+    "eslint": "8.53.0",
     "husky": "8.0.3",
-    "jest": "29.5.0",
-    "lint-staged": "13.2.2",
-    "mongodb": "5.1.0",
+    "jest": "29.7.0",
+    "jest-environment-node": "29.6.4",
+    "lint-staged": "13.3.0",
+    "mongodb": "6.3.0",
     "prettier": "2.8.8",
-    "typescript": "4.9.5"
+    "typescript": "5.1.6"
   },
   "peerDependencies": {
     "jest-environment-node": "28.x || 29.x",
-    "mongodb": "3.x.x || 4.x || 5.x"
+    "mongodb": "3.x.x || 4.x || 5.x || 6.x"
   },
   "engines": {
     "node": ">=16"

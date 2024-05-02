@@ -6,7 +6,7 @@ orbs:
 parameters:
   node_version:
     type: string
-    default: '16.15.1'
+    default: 'lts'
 
 commands:
   install_deps:
@@ -22,7 +22,7 @@ commands:
 jobs:
   build:
     executor:
-      name: node/default
+      name: cimg/node
       tag: << pipeline.parameters.node_version >>
     working_directory: ~/repo
     steps:
