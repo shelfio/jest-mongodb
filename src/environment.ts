@@ -10,18 +10,18 @@ import {getMongodbMemoryOptions} from './helpers';
 // eslint-disable-next-line import/order
 const debug = require('debug')('jest-mongodb:environment');
 
-const options = getMongodbMemoryOptions();
-const isReplSet = Boolean(options.replSet);
-
-debug(`isReplSet`, isReplSet);
-
-const mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
-
 module.exports = class MongoEnvironment extends TestEnvironment {
   globalConfigPath: string;
+  mongo: MongoMemoryReplSet | MongoMemoryServer;
   constructor(config: JestEnvironmentConfig, context: EnvironmentContext) {
     super(config, context);
     this.globalConfigPath = pathJoin(config.globalConfig.rootDir, 'globalConfig.json');
+
+    const options = getMongodbMemoryOptions(config.globalConfig.rootDir);
+    const isReplSet = Boolean(options.replSet);
+    debug(`isReplSet`, isReplSet);
+
+    this.mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
   }
 
   async setup() {
@@ -32,9 +32,9 @@ module.exports = class MongoEnvironment extends TestEnvironment {
     if (globalConfig.mongoUri) {
       this.global.__MONGO_URI__ = globalConfig.mongoUri;
     } else {
-      await mongo.start();
+      await this.mongo.start();
 
-      this.global.__MONGO_URI__ = mongo.getUri();
+      this.global.__MONGO_URI__ = this.mongo.getUri();
     }
 
     this.global.__MONGO_DB_NAME__ = globalConfig.mongoDBName || randomUUID();
@@ -45,7 +45,7 @@ module.exports = class MongoEnvironment extends TestEnvironment {
   async teardown() {
     debug('Teardown MongoDB Test Environment');
 
-    await mongo.stop();
+    await this.mongo.stop();
 
     await super.teardown();
   }
