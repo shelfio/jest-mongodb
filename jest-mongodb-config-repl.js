@@ -1,3 +1,4 @@
+/** @type {import('./src/types').Config} */
 module.exports = {
   mongodbMemoryServerOptions: {
     binary: {
