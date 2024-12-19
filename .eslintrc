@@ -1,9 +1,0 @@
-{
-  "root": true,
-  "extends": [
-    "@shelf/eslint-config/typescript"
-  ],
-  "rules": {
-    "@typescript-eslint/no-var-requires": "off"
-  }
-}
