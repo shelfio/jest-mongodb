@@ -1,12 +1,12 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@5.2.0
+  node: circleci/node@7.0.0
 
 parameters:
   node_version:
     type: string
-    default: 'lts'
+    default: '22.13.0'
 
 commands:
   install_deps:
@@ -33,4 +33,3 @@ jobs:
       - run: yarn test:repl
       - run: yarn lint:ci
       - run: yarn type-check
-
