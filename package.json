@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "debug": "4.3.4",
-    "mongodb-memory-server": "9.2.0"
+    "mongodb-memory-server": "10.1.4"
   },
   "devDependencies": {
     "@babel/cli": "7.26.4",
