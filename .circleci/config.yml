@@ -22,7 +22,7 @@ commands:
 jobs:
   build:
     executor:
-      name: cimg/node
+      name: node/default
       tag: << pipeline.parameters.node_version >>
     working_directory: ~/repo
     steps:
