@@ -13,11 +13,11 @@ commands:
     steps:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
       - node/install-packages:
-          pkg-manager: yarn
-          cache-version: v1-all
+          pkg-manager: pnpm
           cache-only-lockfile: true
-          app-dir: ~/repo
-          override-ci-command: yarn install --pure-lockfile --no-progress
+      - node/install:
+          install-pnpm: true
+          pnpm-version: 9.15.4
 
 jobs:
   build:
