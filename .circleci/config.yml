@@ -33,3 +33,8 @@ jobs:
       - run: yarn test:repl
       - run: yarn lint:ci
       - run: yarn type-check
+
+workflows:
+  build_test:
+    jobs:
+      - build
