@@ -8,3 +8,18 @@ declare global {
 }
 
 export type Mongo = (MongoMemoryReplSet | MongoMemoryServer) & {isRunning: boolean}
+
+type MongoMemoryReplSetOpts = NonNullable<ConstructorParameters<typeof MongoMemoryReplSet>[0]>;
+type MongoMemoryServerOpts = NonNullable<ConstructorParameters<typeof MongoMemoryServer>[0]>;
+
+export interface Config {
+  mongodbMemoryServerOptions?: MongoMemoryReplSetOpts | MongoMemoryServerOpts;
+  /**
+   * @default 'MONGO_URL'
+   */
+  mongoURLEnvName?: string;
+  /**
+   * @default true
+   */
+  useSharedDBForAllJestWorkers?: boolean;
+}
