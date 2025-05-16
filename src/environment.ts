@@ -7,8 +7,16 @@ import type {EnvironmentContext} from '@jest/environment';
 import type {JestEnvironmentConfig} from '@jest/environment';
 import {getMongodbMemoryOptions} from './helpers';
 
-// eslint-disable-next-line import/order
 const debug = require('debug')('jest-mongodb:environment');
+
+type MongoMemoryReplSetOpts = NonNullable<ConstructorParameters<typeof MongoMemoryReplSet>[0]>;
+type MongoMemoryServerOpts = NonNullable<ConstructorParameters<typeof MongoMemoryServer>[0]>;
+
+export function isMongoMemoryReplSetOptions(
+  options?: MongoMemoryReplSetOpts | MongoMemoryServerOpts
+): options is MongoMemoryReplSetOpts {
+  return Boolean((options as MongoMemoryReplSetOpts).replSet);
+}
 
 module.exports = class MongoEnvironment extends TestEnvironment {
   globalConfigPath: string;
@@ -18,7 +26,7 @@ module.exports = class MongoEnvironment extends TestEnvironment {
     this.globalConfigPath = pathJoin(config.globalConfig.rootDir, 'globalConfig.json');
 
     const options = getMongodbMemoryOptions(config.globalConfig.rootDir);
-    const isReplSet = Boolean(options.replSet);
+    const isReplSet = isMongoMemoryReplSetOptions(options);
     debug(`isReplSet`, isReplSet);
 
     this.mongo = isReplSet ? new MongoMemoryReplSet(options) : new MongoMemoryServer(options);
