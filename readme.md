@@ -196,8 +196,8 @@ module.exports = {
 
 ```sh
 $ git checkout master
-$ yarn version
-$ yarn publish
+$ pnpm version
+$ pnpm publish
 $ git push origin master --tags
 ```
 
