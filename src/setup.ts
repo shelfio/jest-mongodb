@@ -9,6 +9,7 @@ import {
   getMongodbMemoryOptions,
   shouldUseSharedDBForAllJestWorkers,
 } from './helpers';
+import {isMongoMemoryReplSetOptions} from './helpers';
 
 const debug = require('debug')('jest-mongodb:setup');
 
@@ -16,7 +17,7 @@ module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
   const globalConfigPath = join(config.rootDir, 'globalConfig.json');
 
   const mongoMemoryServerOptions = getMongodbMemoryOptions(config.rootDir);
-  const isReplSet = Boolean(mongoMemoryServerOptions.replSet);
+  const isReplSet = isMongoMemoryReplSetOptions(mongoMemoryServerOptions);
 
   debug(`isReplSet ${isReplSet}`);
 
@@ -48,7 +49,7 @@ module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
     global.__MONGOD__ = mongo;
   }
 
-  mongoConfig.mongoDBName = options.instance.dbName;
+  mongoConfig.mongoDBName = isMongoMemoryReplSetOptions(options) ? '' : options?.instance?.dbName;
 
   // Write global config to disk because all tests run in different contexts.
   writeFileSync(globalConfigPath, JSON.stringify(mongoConfig));

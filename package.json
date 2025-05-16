@@ -21,15 +21,15 @@
     "lib/"
   ],
   "scripts": {
-    "build": "rm -rf lib/ && yarn build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts'",
+    "build": "rm -rf lib/ && pnpm run build:types && babel src --out-dir lib --ignore '**/*.test.ts' --extensions '.ts'",
     "build:types": "tsc --emitDeclarationOnly --declaration --isolatedModules false --declarationDir lib",
-    "lint": "yarn lint:ci --fix",
+    "lint": "pnpm run lint:ci --fix",
     "lint:ci": "eslint . --quiet",
-    "prepack": "yarn build",
+    "prepack": "pnpm run build",
     "test": "jest",
     "test:repl": "MONGO_MEMORY_SERVER_FILE=jest-mongodb-config-repl.js jest",
     "type-check": "tsc --noEmit",
-    "type-check:watch": "npm run type-check -- --watch"
+    "type-check:watch": "pnpm run type-check --watch"
   },
   "lint-staged": {
     "*.{html,md,yml}": [
@@ -53,6 +53,7 @@
   "devDependencies": {
     "@babel/cli": "7.27.0",
     "@babel/core": "7.26.10",
+    "@jest/environment": "29.7.0",
     "@shelf/babel-config": "1.2.0",
     "@shelf/eslint-config": "4.2.1",
     "@shelf/prettier-config": "1.0.0",

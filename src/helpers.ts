@@ -1,19 +1,30 @@
 import {resolve} from 'path';
-import {Config} from './types';
+import type {MongoMemoryReplSet, MongoMemoryServer} from 'mongodb-memory-server';
+import type {Config} from './types';
 
 const configFile = process.env.MONGO_MEMORY_SERVER_FILE || 'jest-mongodb-config.js';
 
-export function getMongodbMemoryOptions(cwd: string) {
+type MongoMemoryReplSetOpts = NonNullable<ConstructorParameters<typeof MongoMemoryReplSet>[0]>;
+type MongoMemoryServerOpts = NonNullable<ConstructorParameters<typeof MongoMemoryServer>[0]>;
+
+export function isMongoMemoryReplSetOptions(
+  options?: MongoMemoryReplSetOpts | MongoMemoryServerOpts
+): options is MongoMemoryReplSetOpts {
+  return Boolean((options as MongoMemoryReplSetOpts).replSet);
+}
+
+export function getMongodbMemoryOptions(
+  cwd: string
+): MongoMemoryReplSetOpts | MongoMemoryServerOpts | undefined {
   try {
     const {mongodbMemoryServerOptions}: Config = require(resolve(cwd, configFile));
 
     return mongodbMemoryServerOptions;
-  } catch (e) {
+  } catch {
     return {
       binary: {
-        skipMD5: true,
+        checkMD5: false,
       },
-      autoStart: false,
       instance: {},
     };
   }
