@@ -30,11 +30,11 @@ jobs:
     steps:
       - checkout
       - install_deps
+      - run: pnpm run type-check
+      - run: pnpm run lint:ci
       - run: pnpm run build
       - run: pnpm run test
       - run: pnpm run test:repl
-      - run: pnpm run lint:ci
-      - run: pnpm run type-check
 
 workflows:
   build_test:
