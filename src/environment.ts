@@ -5,18 +5,9 @@ import {TestEnvironment} from 'jest-environment-node';
 import {MongoMemoryReplSet, MongoMemoryServer} from 'mongodb-memory-server';
 import type {EnvironmentContext} from '@jest/environment';
 import type {JestEnvironmentConfig} from '@jest/environment';
-import {getMongodbMemoryOptions} from './helpers';
+import {getMongodbMemoryOptions, isMongoMemoryReplSetOptions} from './helpers';
 
 const debug = require('debug')('jest-mongodb:environment');
-
-type MongoMemoryReplSetOpts = NonNullable<ConstructorParameters<typeof MongoMemoryReplSet>[0]>;
-type MongoMemoryServerOpts = NonNullable<ConstructorParameters<typeof MongoMemoryServer>[0]>;
-
-export function isMongoMemoryReplSetOptions(
-  options?: MongoMemoryReplSetOpts | MongoMemoryServerOpts
-): options is MongoMemoryReplSetOpts {
-  return Boolean((options as MongoMemoryReplSetOpts).replSet);
-}
 
 module.exports = class MongoEnvironment extends TestEnvironment {
   globalConfigPath: string;

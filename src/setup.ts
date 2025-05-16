@@ -9,7 +9,7 @@ import {
   getMongodbMemoryOptions,
   shouldUseSharedDBForAllJestWorkers,
 } from './helpers';
-import {isMongoMemoryReplSetOptions} from './environment';
+import {isMongoMemoryReplSetOptions} from './helpers';
 
 const debug = require('debug')('jest-mongodb:setup');
 

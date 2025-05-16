@@ -7,6 +7,12 @@ const configFile = process.env.MONGO_MEMORY_SERVER_FILE || 'jest-mongodb-config.
 type MongoMemoryReplSetOpts = NonNullable<ConstructorParameters<typeof MongoMemoryReplSet>[0]>;
 type MongoMemoryServerOpts = NonNullable<ConstructorParameters<typeof MongoMemoryServer>[0]>;
 
+export function isMongoMemoryReplSetOptions(
+  options?: MongoMemoryReplSetOpts | MongoMemoryServerOpts
+): options is MongoMemoryReplSetOpts {
+  return Boolean((options as MongoMemoryReplSetOpts).replSet);
+}
+
 export function getMongodbMemoryOptions(
   cwd: string
 ): MongoMemoryReplSetOpts | MongoMemoryServerOpts | undefined {
