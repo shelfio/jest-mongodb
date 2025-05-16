@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  node: circleci/node@7.0.0
+  node: circleci/node@7.1.0
 
 parameters:
   node_version:
@@ -12,12 +12,14 @@ commands:
   install_deps:
     steps:
       - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> .npmrc
+      - node/install-pnpm:
+          version: 9.15.4
       - node/install-packages:
           pkg-manager: pnpm
           cache-only-lockfile: true
-      - node/install:
-          install-pnpm: true
-          pnpm-version: 9.15.4
+          # Default command is 'pnpm install --frozen-lockfile'.
+          # 'pnpm install' fails with --frozen-lockfile option because it can't find the lockfile
+          override-ci-command: pnpm install
 
 jobs:
   build:
