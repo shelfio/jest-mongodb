@@ -47,7 +47,7 @@
     "preset": "./jest-preset.js"
   },
   "dependencies": {
-    "debug": "4.3.4",
+    "debug": "4.4.1",
     "mongodb-memory-server": "10.1.4"
   },
   "devDependencies": {
