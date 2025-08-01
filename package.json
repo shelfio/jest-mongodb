@@ -67,7 +67,7 @@
     "lint-staged": "16.1.2",
     "mongodb": "6.16.0",
     "prettier": "3.6.2",
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   },
   "peerDependencies": {
     "jest-environment-node": "28.x || 29.x",
