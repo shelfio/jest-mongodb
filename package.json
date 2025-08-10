@@ -53,7 +53,7 @@
   "devDependencies": {
     "@babel/cli": "7.28.0",
     "@babel/core": "7.28.0",
-    "@jest/environment": "29.7.0",
+    "@jest/environment": "30.0.5",
     "@shelf/babel-config": "3.0.0",
     "@shelf/eslint-config": "4.4.0",
     "@shelf/prettier-config": "1.0.0",
@@ -63,14 +63,14 @@
     "eslint": "9.32.0",
     "husky": "9.1.7",
     "jest": "29.7.0",
-    "jest-environment-node": "29.7.0",
+    "jest-environment-node": "30.0.5",
     "lint-staged": "16.1.2",
     "mongodb": "6.16.0",
     "prettier": "3.6.2",
     "typescript": "5.8.3"
   },
   "peerDependencies": {
-    "jest-environment-node": "28.x || 29.x",
+    "jest-environment-node": "28.x || 29.x || 30.x",
     "mongodb": "3.x.x || 4.x || 5.x || 6.x"
   },
   "engines": {
