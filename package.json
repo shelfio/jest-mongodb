@@ -31,14 +31,6 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm run type-check --watch"
   },
-  "lint-staged": {
-    "*.{html,md,yml}": [
-      "prettier --write"
-    ],
-    "*.{ts,js,json}": [
-      "eslint --fix"
-    ]
-  },
   "babel": {
     "extends": "@shelf/babel-config/backend"
   },
