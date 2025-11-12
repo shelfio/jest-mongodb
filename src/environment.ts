@@ -7,6 +7,7 @@ import type {EnvironmentContext} from '@jest/environment';
 import type {JestEnvironmentConfig} from '@jest/environment';
 import {getMongodbMemoryOptions, isMongoMemoryReplSetOptions} from './helpers';
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const debug = require('debug')('jest-mongodb:environment');
 
 module.exports = class MongoEnvironment extends TestEnvironment {
@@ -49,9 +50,9 @@ module.exports = class MongoEnvironment extends TestEnvironment {
     await super.teardown();
   }
 
-  // @ts-ignore
+  // @ts-expect-error - runScript has incompatible type definitions
   runScript(script) {
-    // @ts-ignore
+    // @ts-expect-error - parent class method call
     return super.runScript(script);
   }
 };

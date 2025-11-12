@@ -9,12 +9,7 @@ describe('parallelism: third worker', () => {
   let db: Db;
 
   beforeAll(async () => {
-    // @ts-ignore
-    connection = await MongoClient.connect(uri, {
-      // @ts-ignore
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    connection = await MongoClient.connect(uri, {});
     db = await connection.db();
   });
 

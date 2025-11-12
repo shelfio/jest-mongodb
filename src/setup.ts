@@ -11,7 +11,8 @@ import {
 } from './helpers';
 import {isMongoMemoryReplSetOptions} from './helpers';
 
-const debug = require('debug')('jest-mongodb:setup');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const debug = require('debug')('jest-mongodb:environment');
 
 module.exports = async (config: JestEnvironmentConfig['globalConfig']) => {
   const globalConfigPath = join(config.rootDir, 'globalConfig.json');

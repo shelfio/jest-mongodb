@@ -17,6 +17,7 @@ export function getMongodbMemoryOptions(
   cwd: string
 ): MongoMemoryReplSetOpts | MongoMemoryServerOpts | undefined {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const {mongodbMemoryServerOptions}: Config = require(resolve(cwd, configFile));
 
     return mongodbMemoryServerOptions;
@@ -32,16 +33,18 @@ export function getMongodbMemoryOptions(
 
 export function getMongoURLEnvName(cwd: string) {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const {mongoURLEnvName}: Config = require(resolve(cwd, configFile));
 
     return mongoURLEnvName || 'MONGO_URL';
-  } catch (e) {
+  } catch {
     return 'MONGO_URL';
   }
 }
 
 export function shouldUseSharedDBForAllJestWorkers(cwd: string) {
   try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     const {useSharedDBForAllJestWorkers}: Config = require(resolve(cwd, configFile));
 
     if (typeof useSharedDBForAllJestWorkers === 'undefined') {
@@ -49,7 +52,7 @@ export function shouldUseSharedDBForAllJestWorkers(cwd: string) {
     }
 
     return useSharedDBForAllJestWorkers;
-  } catch (e) {
+  } catch {
     return true;
   }
 }

@@ -2,7 +2,8 @@ import {join} from 'path';
 import {unlink} from 'fs';
 import type {JestEnvironmentConfig} from '@jest/environment';
 
-const debug = require('debug')('jest-mongodb:teardown');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const debug = require('debug')('jest-mongodb:environment');
 
 module.exports = async function (config: JestEnvironmentConfig['globalConfig']) {
   const globalConfigPath = join(config.rootDir, 'globalConfig.json');

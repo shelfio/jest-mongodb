@@ -134,10 +134,7 @@ describe('insert', () => {
   let db;
 
   beforeAll(async () => {
-    connection = await MongoClient.connect(global.__MONGO_URI__, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+    connection = await MongoClient.connect(global.__MONGO_URI__, {});
     db = await connection.db();
   });
 
