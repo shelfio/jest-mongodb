@@ -43,7 +43,7 @@
     "@shelf/eslint-config": "5.2.3",
     "@shelf/prettier-config": "1.0.0",
     "@shelf/tsconfig": "0.1.0",
-    "@swc/jest": "0.2.31",
+    "@swc/jest": "0.2.39",
     "@types/jest": "29.5.14",
     "@types/node": "22",
     "eslint": "9.32.0",
