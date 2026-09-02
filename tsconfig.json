@@ -1,10 +1,10 @@
 {
   "extends": "@shelf/tsconfig/backend",
   "compilerOptions": {
+    "rootDir": "./src",
     "strict": true,
     "module": "commonjs",
     "target": "ESNext",
-    "moduleResolution": "node",
     "declaration": true,
     "resolveJsonModule": false,
     "outDir": "lib"
