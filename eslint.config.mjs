@@ -1,4 +1,4 @@
-import rules from '@shelf/eslint-config/typescript.js';
+import rules from '@shelf/eslint-config/typescript-no-prettier.js';
 
 export default [
   ...rules,

@@ -22,15 +22,14 @@
   ],
   "scripts": {
     "build": "rm -rf lib/ && tsc",
-    "lint": "pnpm run lint:ci --fix",
-    "lint:ci": "eslint . --quiet",
+    "lint": "oxfmt && eslint . --quiet --fix",
+    "lint:ci": "oxfmt --check && eslint . --quiet",
     "prepack": "pnpm run build",
     "test": "jest",
     "test:repl": "MONGO_MEMORY_SERVER_FILE=jest-mongodb-config-repl.js jest",
     "type-check": "tsc --noEmit",
     "type-check:watch": "pnpm run type-check --watch"
   },
-  "prettier": "@shelf/prettier-config",
   "jest": {
     "preset": "./jest-preset.js"
   },
@@ -42,7 +41,7 @@
   "devDependencies": {
     "@jest/environment": "30.4.1",
     "@shelf/eslint-config": "7.1.0",
-    "@shelf/prettier-config": "1.0.0",
+    "@shelf/prettier-config": "1.1.1",
     "@shelf/tsconfig": "0.2.0",
     "@types/jest": "30.0.0",
     "@types/node": "22",
@@ -52,7 +51,7 @@
     "jest-environment-node": "30.4.1",
     "lint-staged": "16.2.7",
     "mongodb": "7.0.0",
-    "prettier": "3.6.2",
+    "oxfmt": "0.64.0",
     "typescript": "6.0.3"
   },
   "peerDependencies": {
@@ -67,9 +66,10 @@
   },
   "lint-staged": {
     "*.{html,md,yml}": [
-      "prettier --write"
+      "oxfmt --no-error-on-unmatched-pattern"
     ],
     "*.{ts,js,json}": [
+      "oxfmt --no-error-on-unmatched-pattern",
       "eslint --fix"
     ]
   }
