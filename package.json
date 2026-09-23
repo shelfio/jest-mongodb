@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@jest/environment": "30.4.1",
-    "@shelf/eslint-config": "7.1.0",
+    "@shelf/eslint-config": "7.2.0",
     "@shelf/prettier-config": "1.1.1",
     "@shelf/tsconfig": "0.2.0",
     "@types/jest": "30.0.0",
