@@ -1,0 +1,4 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": ["jest-mongodb-config*.js", "src/{environment,setup,teardown}.ts"]
+}

@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "build": "rm -rf lib/ && tsc",
+    "find-deadcode": "knip --no-progress",
     "lint": "oxfmt && eslint . --quiet --fix",
     "lint:ci": "oxfmt --check && eslint . --quiet",
     "prepack": "pnpm run build",
@@ -49,6 +50,7 @@
     "husky": "9.1.7",
     "jest": "30.4.2",
     "jest-environment-node": "30.4.1",
+    "knip": "6.38.0",
     "lint-staged": "16.2.7",
     "mongodb": "7.0.0",
     "oxfmt": "0.64.0",
