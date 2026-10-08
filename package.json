@@ -72,9 +72,9 @@
       "oxfmt --no-error-on-unmatched-pattern"
     ],
     "*.{ts,js,json}": [
-      "oxfmt --no-error-on-unmatched-pattern",
-      "eslint --fix"
+      "eslint --fix",
+      "oxfmt --no-error-on-unmatched-pattern"
     ]
   },
-  "packageManager": "pnpm@11.18.0"
+  "packageManager": "pnpm@12.6.0"
 }
