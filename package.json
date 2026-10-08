@@ -26,6 +26,7 @@
     "lint": "oxfmt && eslint . --quiet --fix",
     "lint:ci": "oxfmt --check && eslint . --quiet",
     "prepack": "pnpm run build",
+    "prepare": "husky",
     "test": "jest",
     "test:repl": "MONGO_MEMORY_SERVER_FILE=jest-mongodb-config-repl.js jest",
     "type-check": "tsc --noEmit",
@@ -74,5 +75,6 @@
       "oxfmt --no-error-on-unmatched-pattern",
       "eslint --fix"
     ]
-  }
+  },
+  "packageManager": "pnpm@11.18.0"
 }
