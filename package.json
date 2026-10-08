@@ -74,5 +74,6 @@
       "oxfmt --no-error-on-unmatched-pattern",
       "eslint --fix"
     ]
-  }
+  },
+  "packageManager": "pnpm@11.18.0"
 }

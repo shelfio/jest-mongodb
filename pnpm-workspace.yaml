@@ -1,6 +1,8 @@
 packages:
   - .
 
+nodeLinker: hoisted
+
 allowBuilds:
   '@swc/core': false
   mongodb-memory-server: false
