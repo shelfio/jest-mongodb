@@ -55,7 +55,7 @@
     "knip": "6.38.0",
     "lint-staged": "16.2.7",
     "mongodb": "7.0.0",
-    "oxfmt": "0.64.0",
+    "oxfmt": "0.70.0",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
