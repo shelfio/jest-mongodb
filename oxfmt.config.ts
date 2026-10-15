@@ -1,4 +1,4 @@
-import baseConfig, {recommendedIgnorePatterns} from '@shelf/prettier-config/oxfmt';
+import baseConfig, {recommendedIgnorePatterns} from '@shelf/eslint-config/oxfmt.js';
 
 export default {
   ...baseConfig,
