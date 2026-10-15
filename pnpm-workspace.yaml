@@ -8,3 +8,5 @@ allowBuilds:
   mongodb-memory-server: false
   unrs-resolver: false
 pmOnFail: ignore
+minimumReleaseAgeExclude:
+  - '@shelf/*'
